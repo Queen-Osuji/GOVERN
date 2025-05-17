@@ -4,10 +4,10 @@ import { Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0b0b0c] text-gray-300 pt-10 pb-6 px-6 md:px-16 lg:px-32 mt-12 border-t border-gray-800">
+    <footer className="bg-[#080808] text-gray-300 pt-10 pb-6 px-6 md:px-16 lg:px-32 mt-12 border-t border-gray-800">
       <div className="grid md:grid-cols-4 gap-8">
         <div>
-          <h3 className="text-xl font-bold text-white mb-3">VXP | Verve</h3>
+          <h3 className="text-xl font-bold text-white mb-3">VXP<span className="text-purple-500 px-[1px]">|</span>Verve</h3>
           <p className="text-sm text-gray-400">
             Empowering women, startups, and creators with futuristic digital services and AI products.
           </p>
