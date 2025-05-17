@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 
 export default function About() {
   return (
-    <div className="bg-[#0e0e10] text-white min-h-screen flex flex-col">
+    <div className="bg-[#080808] text-white min-h-screen flex flex-col">
       <NavBar />
 
       <main className="flex-grow pt-20 px-6 md:px-16 lg:px-32">

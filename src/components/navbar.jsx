@@ -8,7 +8,7 @@ export default function NavBar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="fixed w-full z-50 bg-[#080808] bg-opacity-90 backdrop-blur-lg shadow-md border-b border-gray-800">
+    <nav className="fixed w-full z-50 bg-[#080808] bg-opacity-90 backdrop-blur-lg shadow-md border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-4 flex items-center justify-between">
         <Link to="/" className="text-white text-2xl font-black tracking-widest">
           VXP<span className="text-purple-500">|</span>Verve
