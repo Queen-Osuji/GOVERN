@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import React from 'react';
 import NavBar from '../components/navbar';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import { Book } from 'lucide-react';
 import { motion } from 'framer-motion';
 

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ShoppingCart } from 'lucide-react'
 import NavBar from '../components/navbar';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 
 function Button({ children, variant = 'primary', className = '', ...props }) {
   const base =
