@@ -5,9 +5,9 @@ import About from '../components/About';
 import Services from '../components/Services';
 import AIStore from '../components/AIStore';
 import DigitalShop from '../components/DigitalShop';
-import Courses from '../components/Courses';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import CTABanner from '../components/CTABanner';
 
 export default function Home() {
   return (
@@ -20,7 +20,8 @@ export default function Home() {
         <Services />
         <AIStore />
         <DigitalShop />
-        <Courses />
+        {/* <Courses /> */}
+        <CTABanner />
       </main>
 
       <Footer />
