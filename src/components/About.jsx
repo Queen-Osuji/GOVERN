@@ -75,7 +75,7 @@ const About = () => {
           <div className="relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl shadow-purple-500/20">
               <img
-                src="https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20an%20elegant%20African%20businesswoman%20in%20modern%20office%20setting%2C%20confident%20pose%20with%20laptop%2C%20wearing%20stylish%20business%20attire%20in%20purple%20or%20gold%20tones%2C%20soft%20professional%20lighting%2C%20clean%20minimal%20background%2C%20high-end%20corporate%20aesthetic&width=600&height=800&seq=founder-img&orientation=portrait"
+                src="/images/ceo.jpg"
                 alt="Queen Osuji"
                 className="w-full h-full object-cover"
               />
