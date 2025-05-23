@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import ServiceDetailModal from './ui/ServiceDetailModal'; // Adjust path if needed
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   const filterServices = (category) => {
     setActiveCategory(category);
@@ -11,67 +14,77 @@ const Services = () => {
     {
       icon: "palette",
       title: "Premium Graphic Design",
-      description: "Elevate your brand with stunning visuals crafted by our expert designers.",
+      description: "Elevate your brand with stunning visuals crafted by our expert designers. Our design process involves understanding your brand's core values to deliver impactful and memorable graphics that resonate with your target audience.",
       price: "From $499",
       category: "Design"
     },
     {
       icon: "laptop-code",
       title: "Web Development",
-      description: "Custom websites and applications built with cutting-edge technology.",
+      description: "Custom websites and applications built with cutting-edge technology. We specialize in responsive design, ensuring your site looks and performs flawlessly on all devices, from desktops to smartphones.",
       price: "From $1,999",
       category: "Development"
     },
     {
       icon: "brain",
       title: "AI Integration",
-      description: "Implement powerful AI solutions to automate and enhance your business processes.",
+      description: "Implement powerful AI solutions to automate and enhance your business processes. We help you leverage machine learning, natural language processing, and computer vision to gain a competitive edge.",
       price: "From $2,499",
       category: "AI"
     },
     {
       icon: "chart-line",
       title: "Digital Strategy",
-      description: "Comprehensive digital strategies to position your business for growth and success.",
+      description: "Comprehensive digital strategies to position your business for growth and success. Our approach includes market analysis, competitor research, and a tailored roadmap to achieve your online objectives.",
       price: "From $1,499",
       category: "Strategy"
     },
     {
       icon: "mobile-alt",
       title: "Mobile App Development",
-      description: "Intuitive and powerful mobile applications designed for your specific business needs.",
+      description: "Intuitive and powerful mobile applications designed for your specific business needs. We develop for both iOS and Android, focusing on user experience and robust functionality.",
       price: "From $3,999",
       category: "Development"
     },
     {
       icon: "robot",
       title: "Custom AI Solutions",
-      description: "Tailored artificial intelligence solutions to solve your unique business challenges.",
+      description: "Tailored artificial intelligence solutions to solve your unique business challenges. From predictive analytics to custom AI models, we build solutions that deliver measurable results.",
       price: "From $4,999",
       category: "AI"
     },
     {
       icon: "search",
       title: "SEO Optimization",
-      description: "Boost your online visibility and drive organic traffic with our SEO expertise.",
+      description: "Boost your online visibility and drive organic traffic with our SEO expertise. We employ white-hat techniques to improve your search engine rankings and attract qualified leads.",
       price: "From $899",
       category: "Strategy"
     },
     {
       icon: "pencil-ruler",
       title: "UI/UX Design",
-      description: "Create seamless user experiences with our intuitive and beautiful interface designs.",
+      description: "Create seamless user experiences with our intuitive and beautiful interface designs. Our user-centered design philosophy ensures your digital products are both engaging and easy to use.",
       price: "From $1,299",
       category: "Design"
     },
     {
       icon: "bullhorn",
       title: "Digital Marketing",
-      description: "Strategic digital marketing campaigns to reach your target audience and drive conversions.",
+      description: "Strategic digital marketing campaigns to reach your target audience and drive conversions. We cover everything from social media marketing to PPC and content strategy.",
       price: "From $1,199",
       category: "Strategy"
     }
   ];
+
+  const handleLearnMoreClick = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+  };
 
   return (
     <section id="services" className="py-20 bg-black">
@@ -105,10 +118,13 @@ const Services = () => {
                   <i className={`fas fa-${service.icon} text-2xl`}></i>
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-300 mb-6">{service.description}</p>
+                <p className="text-gray-300 mb-6 h-20 overflow-hidden text-ellipsis">{service.description}</p> {/* Added height and overflow for consistency */}
                 <div className="flex justify-between items-center">
                   <span className="text-purple-400 font-medium">{service.price}</span>
-                  <button className="bg-purple-700/20 hover:bg-purple-700/40 text-purple-300 px-4 py-2 rounded-full text-sm transition-all !rounded-button whitespace-nowrap cursor-pointer">
+                  <button 
+                    onClick={() => handleLearnMoreClick(service)} 
+                    className="bg-purple-700/20 hover:bg-purple-700/40 text-purple-300 px-4 py-2 rounded-full text-sm transition-all !rounded-button whitespace-nowrap cursor-pointer"
+                  >
                     Learn More
                   </button>
                 </div>
@@ -117,6 +133,11 @@ const Services = () => {
           ))}
         </div>
       </div>
+      <ServiceDetailModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        service={selectedService} 
+      />
     </section>
   );
 };

@@ -33,17 +33,15 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4 md:py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
+            <a href="/">
             <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-yellow-400">
               VXP<span className="text-white">.</span>
             </h1>
+            </a>
           </div>
           <nav className="hidden md:flex space-x-6 lg:space-x-8 text-gray-300 font-medium">
             <a href="/about" className="hover:text-purple-400 transition-colors">About</a>
-            {/* <a href="#services" className="hover:text-purple-400 transition-colors">Services</a> */}
-            {/* <a href="#ai-store" className="hover:text-purple-400 transition-colors">AI Store</a> */}
             <a href="/digital-shop" className="hover:text-purple-400 transition-colors">Digital Shop</a>
-            {/* <a href="#courses" className="hover:text-purple-400 transition-colors">Courses</a> */}
-            {/* <a href="#blog" className="hover:text-purple-400 transition-colors">Blog</a> */}
             <a href="/contact" className="hover:text-purple-400 transition-colors">Contact</a>
  </nav>
  <a href="/getstarted" className="hidden md:block bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-2 rounded-full text-white text-sm font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all">Get Started</a>
