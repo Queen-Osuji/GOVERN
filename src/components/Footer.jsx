@@ -12,20 +12,6 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">
               Pioneering the digital frontier with cutting-edge AI solutions and premium digital services.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center hover:bg-purple-700 transition-all cursor-pointer">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center hover:bg-purple-700 transition-all cursor-pointer">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center hover:bg-purple-700 transition-all cursor-pointer">
-                <i className="fab fa-youtube"></i>
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center hover:bg-purple-700 transition-all cursor-pointer">
-                <i className="fab fa-twitter"></i>
-              </a>
-            </div>
           </div>
           <div>
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
@@ -59,7 +45,7 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="w-full bg-purple-900/20 border border-purple-800/30 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 border-none"
+                  className="w-full bg-purple-900/30 border border-purple-800/50 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 border-none"
                 />
               </div>
               <button className="w-full bg-gradient-to-r from-purple-600 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all !rounded-button whitespace-nowrap cursor-pointer">

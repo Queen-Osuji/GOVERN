@@ -9,7 +9,7 @@ const DigitalShop = () => {
       {
         title: "100 Prompts",
         author: "vxp",
-        price: { usd: "$40.56" },
+        price: { usd: "$100.56" },
         // salePrice: { usd: "$17.00" }, 
         gumroadLink: "https://qosuji.gumroad.com/l/100promptsforprof", // Add Gumroad link
         image: "/images/books/book1.jpg", // Placeholder image
@@ -23,7 +23,7 @@ const DigitalShop = () => {
         image: "/images/books/book2.png", // Placeholder image
       },
       {
-        title: "The Influence Playbook",
+        title: "Beginner's Guide to Machine Learning",
         author: "vxp",
         price: { usd: "$300.00" },
         // No sale price for the second book

@@ -66,6 +66,7 @@ const Header = () => {
             </button>
           </div>
           <nav className="flex flex-col space-y-6 text-gray-800"> {/* Text color adjusted for mobile menu */}
+            <a href="/" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Home</a>
             <a href="/about" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">About</a>
             <a href="/digital-shop" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Digital Shop</a>
             <a href="#contact" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Contact</a>
