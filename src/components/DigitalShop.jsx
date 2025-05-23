@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const DigitalShop = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Initially load only two books
+    const initialProducts = [
+      {
+        title: "100 Prompts",
+        author: "vxp",
+        price: { usd: "$40.56" },
+        // salePrice: { usd: "$17.00" }, 
+        gumroadLink: "https://qosuji.gumroad.com/l/100promptsforprof", // Add Gumroad link
+        image: "/images/books/book1.jpg", // Placeholder image
+      },
+      {
+        title: "The Influence Playbook",
+        author: "vxp",
+        price: { usd: "$387.00" },
+        // No sale price for the second book
+        gumroadLink: "https://qosuji.gumroad.com/l/influncerplaybook", // Add Gumroad link
+        image: "/images/books/book2.png", // Placeholder image
+      },
+      {
+        title: "The Influence Playbook",
+        author: "vxp",
+        price: { usd: "$300.00" },
+        // No sale price for the second book
+        gumroadLink: "https://qosuji.gumroad.com/l/aiforbusiness", // Add Gumroad link
+        image: "/images/books/book3.jpg", // Placeholder image
+      },
+    ];
+    setProducts(initialProducts);
+  }, []);
+
   return (
     <section id="digital-shop" className="py-20 bg-black">
       <div className="container mx-auto px-6">
@@ -10,114 +43,52 @@ const DigitalShop = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto mt-4"></div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              // Placeholder book data - replace with your actual book information
-              // You can add more properties relevant to books like author, genre, etc.
-              title: "Business Website Template",
-              category: "Website Template",
-              description: "Modern, responsive website template perfect for business and corporate websites.",
-              price: {
-                ngn: "₦45,000",
-                usd: "$99"
-              },
-              features: ["Responsive Design", "5 Page Templates", "Contact Form", "SEO Optimized"],
-              image: "https://readdy.ai/api/search-image?query=Modern%20and%20elegant%20business%20website%20template%20mockup%20displayed%20on%20multiple%20devices%2C%20featuring%20purple%20and%20gold%20accents%2C%20clean%20minimal%20interface%20design%20with%20professional%20layout%2C%20high-end%20website%20presentation%20on%20dark%20background&width=600&height=400&seq=digital-1&orientation=landscape"
-            },
-            {
-              // Placeholder book data
-              title: "Social Media Kit",
-              category: "Marketing",
-              description: "Complete social media template pack with 50+ customizable designs.",
-              price: {
-                ngn: "₦27,000",
-                usd: "$59"
-              },
-              features: ["50+ Templates", "Instagram Posts", "Story Templates", "Brand Guidelines"],
-              image: "https://readdy.ai/api/search-image?query=Collection%20of%20elegant%20social%20media%20templates%20and%20posts%20displayed%20in%20a%20grid%20layout%2C%20featuring%20purple%20and%20gold%20color%20scheme%2C%20modern%20design%20elements%2C%20professional%20marketing%20materials%20on%20dark%20background&width=600&height=400&seq=digital-2&orientation=landscape"
-            },
-            {
-              // Placeholder book data
-              title: "E-commerce Starter Pack",
-              category: "E-commerce",
-              description: "Complete e-commerce solution with product templates and marketing materials.",
-              price: {
-                ngn: "₦67,500",
-                usd: "$149"
-              },
-              features: ["Product Templates", "Email Templates", "Banner Sets", "Product Cards"],
-              image: "https://readdy.ai/api/search-image?query=Professional%20e-commerce%20website%20template%20mockup%20with%20product%20displays%20and%20shopping%20cart%20interface%2C%20purple%20and%20gold%20accents%2C%20modern%20minimal%20design%2C%20complete%20online%20store%20presentation%20on%20dark%20background&width=600&height=400&seq=digital-3&orientation=landscape"
-            },
-            {
-              // Placeholder book data
-              title: "Digital Marketing Planner",
-              category: "Planning",
-              description: "Comprehensive digital marketing planner with strategy templates and tracking tools.",
-              price: {
-                ngn: "₦22,500",
-                usd: "$49"
-              },
-              features: ["Strategy Templates", "Analytics Tracker", "Content Calendar", "ROI Calculator"],
-              image: "https://readdy.ai/api/search-image?query=Digital%20marketing%20planner%20interface%20with%20analytics%20dashboard%20and%20planning%20tools%2C%20featuring%20purple%20and%20gold%20elements%2C%20professional%20business%20planning%20layout%2C%20modern%20tech%20aesthetic%20on%20dark%20background&width=600&height=400&seq=digital-4&orientation=landscape"
-            },
-            {
-              // Placeholder book data
-              title: "Brand Identity Pack",
-              category: "Branding",
-              description: "Complete brand identity package with logo templates and brand guidelines.",
-              price: {
-                ngn: "₦54,000",
-                usd: "$119"
-              },
-              features: ["Logo Templates", "Brand Guidelines", "Social Media Kit", "Business Cards"],
-              image: "https://readdy.ai/api/search-image?query=Professional%20brand%20identity%20package%20presentation%20with%20logo%20designs%20and%20brand%20guidelines%2C%20purple%20and%20gold%20color%20scheme%2C%20elegant%20branding%20materials%20layout%2C%20modern%20minimal%20design%20on%20dark%20background&width=600&height=400&seq=digital-5&orientation=landscape"
-            },
-            {
-              // Placeholder book data
-              title: "Lead Generation Kit",
-              category: "Marketing",
-              description: "High-converting lead generation templates and landing pages.",
-              price: {
-                ngn: "₦36,000",
-                usd: "$79"
-              },
-              features: ["Landing Pages", "Email Templates", "Lead Magnets", "Analytics Setup"],
-              image: "https://readdy.ai/api/search-image?query=Lead%20generation%20landing%20page%20templates%20and%20marketing%20materials%20displayed%20on%20devices%2C%20purple%20and%20gold%20accents%2C%20professional%20conversion%20optimization%20layout%2C%20modern%20tech%20aesthetic%20on%20dark%20background&width=600&height=400&seq=digital-6&orientation=landscape"
-            }
-          ].map((product, index) => (
+          {products.map((product, index) => (
             <div key={index} className="bg-gradient-to-br from-purple-900/20 to-black border border-purple-800/20 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-purple-500/10 transition-all group">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-60 w-40 mx-auto mt-6 overflow-hidden rounded-md"> {/* Adjusted size and added margin */}
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" // Changed object-cover to object-contain
                 />
-                <div className="absolute top-4 left-4 bg-purple-900/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-purple-300">
-                  {product.category}
-                </div>
+                {product.salePrice && ( // Conditionally render "Sale" tag
+                  <div className="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded-md text-xs text-white font-bold">
+                    Sale
+                  </div>
+                )}
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{product.title}</h3>
-                <p className="text-gray-300 text-sm mb-4">{product.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {product.features.map((feature, i) => (
-                    <span key={i} className="bg-purple-900/30 px-3 py-1 rounded-full text-xs text-purple-300">
-                      {feature}
-                    </span>
+                <h3 className="text-xl font-bold mb-1 text-white">{product.title}</h3>
+                <p className="text-gray-400 text-sm mb-2">{product.author}</p> {/* Placeholder author */}
+                <div className="flex items-center mb-3">
+                  {/* Placeholder Rating */}
+                  {[...Array(4)].map((_, i) => ( // Changed to 4 stars as in the image
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+                    </svg>
                   ))}
+ <span className="ml-2 text-sm text-gray-400">(4.5)</span> {/* Placeholder rating value */}
                 </div>
+
                 <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <span className="block text-purple-400 font-medium">{product.price.ngn}</span>
-                    <span className="text-sm text-gray-400">{product.price.usd}</span>
+                  {/* Prices */}
+                  <div className="flex items-baseline">
+                    {product.salePrice ? (
+                      <>
+                        <span className="text-purple-400 font-medium mr-2">{product.salePrice.usd}</span>
+                        <span className="text-gray-500 text-xs line-through">{product.price.usd}</span>
+                      </>
+                    ) : (
+                      <span className="text-purple-400 font-medium">{product.price.usd}</span>
+                    )}
                   </div>
-                  <button className="bg-purple-700/20 hover:bg-purple-700/40 text-purple-300 px-4 py-2 rounded-full text-sm transition-all !rounded-button whitespace-nowrap cursor-pointer">
-                    Preview
-                  </button>
                 </div>
                 <button
-                  onClick={() => { window.location.href = '/checkout'; }}
-                  className="w-full bg-gradient-to-r from-purple-600 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all !rounded-button whitespace-nowrap cursor-pointer">
+                  // Add to Cart functionality will be added here
+                  // onClick={() => { console.log('Add to Cart clicked for:', product.title); }}
+                  onClick={() => window.open(product.gumroadLink, '_blank')}
+                  className="w-full bg-gradient-to-r from-purple-600 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all !rounded-button whitespace-nowrap cursor-pointer"
+>
                   Purchase Now
                 </button>
               </div>
