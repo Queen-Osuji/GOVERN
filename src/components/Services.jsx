@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
 import ServiceDetailModal from './ui/ServiceDetailModal'; // Adjust path if needed
+// Import Lucide icons
+import {
+  Palette,
+  Laptop,
+  Brain,
+  LineChart,
+  Smartphone,
+  Cpu, // Using Cpu as a more generic 'Custom AI Solutions' icon
+  Search,
+  PenTool, // Using PenTool for UI/UX
+  Megaphone // Using Megaphone for Digital Marketing
+} from 'lucide-react';
 
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -12,63 +24,63 @@ const Services = () => {
 
   const services = [
     {
-      icon: "palette",
+      icon: Palette, // Lucide icon component
       title: "Premium Graphic Design",
       description: "Elevate your brand with stunning visuals crafted by our expert designers. Our design process involves understanding your brand's core values to deliver impactful and memorable graphics that resonate with your target audience.",
       price: "From $499",
       category: "Design"
     },
     {
-      icon: "laptop-code",
+      icon: Laptop,
       title: "Web Development",
       description: "Custom websites and applications built with cutting-edge technology. We specialize in responsive design, ensuring your site looks and performs flawlessly on all devices, from desktops to smartphones.",
       price: "From $1,999",
       category: "Development"
     },
     {
-      icon: "brain",
+      icon: Brain,
       title: "AI Integration",
       description: "Implement powerful AI solutions to automate and enhance your business processes. We help you leverage machine learning, natural language processing, and computer vision to gain a competitive edge.",
       price: "From $2,499",
       category: "AI"
     },
     {
-      icon: "chart-line",
+      icon: LineChart,
       title: "Digital Strategy",
       description: "Comprehensive digital strategies to position your business for growth and success. Our approach includes market analysis, competitor research, and a tailored roadmap to achieve your online objectives.",
       price: "From $1,499",
       category: "Strategy"
     },
     {
-      icon: "mobile-alt",
+      icon: Smartphone,
       title: "Mobile App Development",
       description: "Intuitive and powerful mobile applications designed for your specific business needs. We develop for both iOS and Android, focusing on user experience and robust functionality.",
       price: "From $3,999",
       category: "Development"
     },
     {
-      icon: "robot",
+      icon: Cpu, // Changed from 'robot'
       title: "Custom AI Solutions",
       description: "Tailored artificial intelligence solutions to solve your unique business challenges. From predictive analytics to custom AI models, we build solutions that deliver measurable results.",
       price: "From $4,999",
       category: "AI"
     },
     {
-      icon: "search",
+      icon: Search,
       title: "SEO Optimization",
       description: "Boost your online visibility and drive organic traffic with our SEO expertise. We employ white-hat techniques to improve your search engine rankings and attract qualified leads.",
       price: "From $899",
       category: "Strategy"
     },
     {
-      icon: "pencil-ruler",
+      icon: PenTool, // Changed from 'pencil-ruler'
       title: "UI/UX Design",
       description: "Create seamless user experiences with our intuitive and beautiful interface designs. Our user-centered design philosophy ensures your digital products are both engaging and easy to use.",
       price: "From $1,299",
       category: "Design"
     },
     {
-      icon: "bullhorn",
+      icon: Megaphone, // Changed from 'bullhorn'
       title: "Digital Marketing",
       description: "Strategic digital marketing campaigns to reach your target audience and drive conversions. We cover everything from social media marketing to PPC and content strategy.",
       price: "From $1,199",
@@ -115,7 +127,8 @@ const Services = () => {
                 className="bg-gradient-to-br from-purple-900/20 to-black border border-purple-800/20 rounded-xl p-8 hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 transition-all group cursor-pointer"
               >
                 <div className="w-16 h-16 bg-purple-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-all">
-                  <i className={`fas fa-${service.icon} text-2xl`}></i>
+                  {/* Render Lucide icon component */} 
+                  {service.icon && React.createElement(service.icon, { size: 32, className: "text-white" })}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-300 mb-6 h-20 overflow-hidden text-ellipsis">{service.description}</p> {/* Added height and overflow for consistency */}
