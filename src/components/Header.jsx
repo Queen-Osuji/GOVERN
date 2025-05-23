@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <header className={headerClasses}>
-      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 md:py-6"> {/* Adjusted padding */} 
+      <div className="container mx-auto px-4 md:px-20 py-3  md:py-3"> {/* Adjusted padding */} 
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <a href="/">
@@ -44,7 +44,6 @@ const Header = () => {
             <a href="/digital-shop" className="hover:text-purple-400 transition-colors">Digital Shop</a>
             <a href="/contact" className="hover:text-purple-400 transition-colors">Contact</a>
  </nav>
- <a href="/getstarted" className="hidden md:block bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-2 rounded-full text-white text-sm font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all">Get Started</a>
           <div className="md:hidden">
             <button onClick={toggleMenu} className="text-white focus:outline-none">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +69,6 @@ const Header = () => {
             <a href="/about" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">About</a>
             <a href="/digital-shop" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Digital Shop</a>
             <a href="#contact" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Contact</a>
- <a href="/get-started" onClick={toggleMenu} className="mt-4 bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-2 rounded-full text-white text-sm font-medium text-center hover:shadow-lg hover:shadow-purple-500/30 transition-all">Get Started</a> {/* Added Get Started button to mobile menu */}
           </nav>
         </div>
       </div>

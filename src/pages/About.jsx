@@ -10,16 +10,6 @@ export default function About() {
       <Header />
 
       <main className="flex-grow pt-20">
-        {/* Hero-like section for About page */}
-        {/* <section className="text-center py-20 bg-gradient-to-b from-black to-purple-950/20">
-          <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-transparent bg-clip-text">
-            About VXP & Verve
-          </h1>
-          <p className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-            Founded by Queen Osuji, VXP is a powerhouse for elite digital skills, while Verve brings cutting-edge AI innovation to the global stage.
-          </p>
-        </section> */}
-        
         {/* Integrate the existing About component */}
         <AboutComponent />
 

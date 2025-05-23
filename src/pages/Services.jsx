@@ -36,9 +36,6 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mt-8 flex justify-center gap-4"
           >
-            {/* <a href="#services" className="px-6 py-3 bg-purple-600 rounded-2xl text-white shadow-lg hover:bg-purple-700 transition-all flex items-center gap-2">
-              <Book className="w-5 h-5" /> Explore Services
-            </a> */}
             <a href="#shop" className="px-6 py-3 border border-purple-600 text-purple-400 rounded-2xl hover:bg-purple-800 hover:text-white transition-all">
               Shop eBooks
             </a>

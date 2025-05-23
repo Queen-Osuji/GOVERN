@@ -65,9 +65,9 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-black to-purple-950/20">
+    <section id="about" className="py-20 bg-black px-10 my-30">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">About <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">VXP & Verve</span></h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto"></div>
         </div>
@@ -115,7 +115,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="mt-20">
+        <div className="mt-30">
           <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-800/30 rounded-xl p-8 relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl"></div>
             <div className="relative z-10">
@@ -123,16 +123,37 @@ const About = () => {
               <div className="grid md:grid-cols-3 gap-8">
                 {[
                   {
+                    image: "/images/people/person1.jpg",
                     name: "Sarah Johnson",
                     role: "Tech Entrepreneur",
                     quote: "VXP transformed my business with their AI solutions. The ROI has been incredible, and their team's expertise is unmatched."
                   },
                   {
+                    image: "/images/people/person2.jpg",
                     name: "Amara Okafor",
                     role: "Startup Founder",
                     quote: "Working with Queen and the Verve team gave my startup the digital edge we needed. Their strategic approach to digital presence is revolutionary."
                   },
                   {
+                    image: "/images/people/person3.jpg",
+                    name: "Lisa Chen",
+                    role: "Creative Director",
+                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
+                  },
+                  {
+                    image: "/images/people/person4.jpg",
+                    name: "Lisa Chen",
+                    role: "Creative Director",
+                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
+                  },
+                  {
+                    image: "/images/people/person5.jpg",
+                    name: "Lisa Chen",
+                    role: "Fronder",
+                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
+                  },
+                  {
+                    image: "/images/people/person6.jpg",
                     name: "Lisa Chen",
                     role: "Creative Director",
                     quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
@@ -142,7 +163,7 @@ const About = () => {
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
                         <img
-                          src={`https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20confident%20diverse%20business%20woman%20with%20elegant%20style%2C%20neutral%20background%2C%20high%20quality%20portrait%20with%20soft%20lighting%2C%20business%20attire%2C%20professional%20appearance&width=100&height=100&seq=testimonial-${index}&orientation=squarish`}
+                          src={testimonial.image}
                           alt={testimonial.name}
                           className="w-full h-full object-cover"
                         />
