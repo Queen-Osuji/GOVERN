@@ -38,7 +38,6 @@ const Header = () => {
             </h1>
           </div>
           <nav className="hidden md:flex space-x-6 lg:space-x-8 text-gray-300 font-medium">
-            <a href="/home" className="hover:text-purple-400 transition-colors">Home</a>
             <a href="/about" className="hover:text-purple-400 transition-colors">About</a>
             {/* <a href="#services" className="hover:text-purple-400 transition-colors">Services</a> */}
             {/* <a href="#ai-store" className="hover:text-purple-400 transition-colors">AI Store</a> */}

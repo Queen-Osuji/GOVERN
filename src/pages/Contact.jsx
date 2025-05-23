@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -15,24 +16,55 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send email)
     console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
-    alert('Message sent successfully!');
-  };
 
+    fetch('http://localhost:3000/api/email/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => {
+      if (!response.ok) {
+        // If the response is not OK (e.g., 404, 500), throw an error with the status
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      // Check if the response has a body before trying to parse as JSON
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.indexOf('application/json') !== -1) {
+        return response.json();
+      } else {
+        // If not JSON, read as text
+        return response.text().then(text => {
+          throw new Error(`Expected JSON response, but received: ${text}`);
+        });
+      }
+    })
+    .then(data => {
+      if (data.status === 'succeeded' || data.msg === 'Email sent successfully') { // Also check for 'msg' as backend sends that on success
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        alert('Failed to send message. Please try again later.');
+      }
+    })
+    .catch(error => {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again later.');
+    });
+  };
   return (
-    <section id="contact" className="py-20 bg-black">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Touch</span></h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">Have questions or want to collaborate? Reach out to us!</p>
+    <section id="contact" className="py-20 bg-black min-h-screen">
+      <div className="container mx-auto px-6 py-10">
+        <div className="text-center mb-16 mt-10">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Get In <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Touch</span></h2>
+          <p className="text-gray-300 max-w-2xl mx-auto text-center">Have questions or want to collaborate? Reach out to us!</p>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto mt-4"></div>
         </div>
 
@@ -110,15 +142,11 @@ const Contact = () => {
               <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  <strong className="text-purple-400">Email:</strong> your.email@example.com
+                  <strong className="text-purple-400">Email:</strong> vxpexpert@gmail.com
                 </p>
                 <p>
-                  <strong className="text-purple-400">Phone:</strong> +1 123 456 7890
+                  <strong className="text-purple-400">Phone:</strong> +234 8134494391
                 </p>
-                {/* Add other contact details if needed */}
-                {/* <p>
-                  <strong className="text-purple-400">Address:</strong> 123 Business St, City, Country
-                </p> */}
               </div>
               {/* You can add social media links or a map here */}
             </div>
