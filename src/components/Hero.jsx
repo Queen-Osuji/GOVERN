@@ -32,7 +32,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-6 pt-4">
               <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
+                {/* {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-10 h-10 rounded-full border-2 border-purple-800 overflow-hidden">
                     <img
                       src={`https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20confident%20diverse%20business%20woman%20with%20elegant%20style%2C%20neutral%20background%2C%20high%20quality%20portrait%20with%20soft%20lighting%2C%20business%20attire%2C%20professional%20appearance&width=100&height=100&seq=client-${i}&orientation=squarish`}
@@ -40,7 +40,7 @@ const Hero = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                ))}
+                ))} */}
               </div>
               <div>
                 <p className="text-sm text-gray-300">Trusted by <span className="text-purple-400 font-medium">2,000+</span> visionary leaders</p>
