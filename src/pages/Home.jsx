@@ -11,10 +11,10 @@ import CTABanner from '../components/CTABanner';
 
 export default function Home() {
   return (
-    <div className="bg-[#080808] text-white min-h-screen flex flex-col">
+    <div className="bg-[#080808] text-white min-h-screen flex flex-col overflow-x-hidden">
       <Header />
 
-      <main className="flex-grow pt-20">
+      <main className="w-full">
         <Hero />
         <About />
         <Services />
