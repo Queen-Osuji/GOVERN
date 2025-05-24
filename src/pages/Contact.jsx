@@ -18,7 +18,7 @@ const Contact = () => {
     e.preventDefault();
     console.log('Form submitted:', formData);
 
-    fetch('http://localhost:3000/api/email/send-email', {
+    fetch('https://5000-firebase-governgit-1747930796647.cluster-3gc7bglotjgwuxlqpiut7yyqt4.cloudworkstations.dev/api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -140,13 +140,21 @@ const Contact = () => {
           <div className="w-full lg:w-1/2 px-6">
             <div className="bg-gradient-to-br from-purple-900/20 to-black border border-purple-800/20 rounded-xl p-8 hover:shadow-xl hover:shadow-purple-500/10 transition-all">
               <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
-              <div className="space-y-4 text-gray-300">
-                <p>
-                  <strong className="text-purple-400">Email:</strong> vxpexpert@gmail.com
+              <div className="space-y-4 text-gray-300 ">
+                <div className="flex flex-col">
+                <p className="mb-2">
+                  <strong className="text-purple-400">Email</strong>
                 </p>
-                <p>
-                  <strong className="text-purple-400">Phone:</strong> +234 8134494391
+                <p className="mb-2">
+                  <strong className="text-purple-400"></strong> <a href="mailto:vxpexpert@gmail.com" className="hover:text-purple-400 transition-colors">vxpexpert@gmail.com</a> 
                 </p>
+                <p className="mb-2">
+                  <strong className="text-purple-400"></strong> <a href="mailto:vxpservices81@gmail.com" className="hover:text-purple-400 transition-colors">vxpservices81@gmail.com</a> 
+                </p>
+                <p className="mb-2">
+                  <strong className="text-purple-400"></strong> <a href="mailto:vxpexperts@gmail.com" className="hover:text-purple-400 transition-colors">vxpexperts@gmail.com</a> 
+                </p>
+                </div>
               </div>
               {/* You can add social media links or a map here */}
             </div>

@@ -14,7 +14,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden px-10">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://readdy.ai/api/search-image?query=Futuristic%20digital%20landscape%20with%20purple%20and%20gold%20color%20scheme%2C%20abstract%20geometric%20shapes%20and%20light%20particles%20floating%20in%20space%2C%20modern%20tech%20aesthetic%20with%20soft%20glow%20effects%2C%20minimalist%20design%20with%20depth%20and%20dimension%2C%20perfect%20for%20a%20high-end%20tech%20brand%20background%20with%20space%20for%20text%20on%20the%20left%20side&width=1440&height=900&seq=hero-bg-1&orientation=landscape"
+          src="/images/Hero_image.jpg"
           alt="Futuristic digital landscape"
           className="w-full h-full object-cover object-top"
         />
@@ -23,13 +23,13 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10"> {/* Adjusted padding */} 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"> {/* Adjusted gap */} 
           <div className="space-y-6 md:space-y-8"> {/* Adjusted spacing */} 
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight"> {/* Adjusted text size */} 
-              <span className="block">Envision the</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Future of Digital</span>
-              <span className="block">Experience</span>
+            <h2 className="text-3xl md:text-6xl font-bold leading-tight"> {/* Adjusted text size */} 
+              <span className="block">Can You See It ?</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">The Future Is Yours</span>
+              <span className="block">To Create</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-lg"> {/* Adjusted text size */} 
-              Pioneering the digital frontier with cutting-edge AI solutions and premium digital services designed for visionary women in business and tech.
+            With our cutting-edge AI solutions and premium digital services, visionary women in business and tech are turning possibilities into realities. Join the movement
             </p>
           </div>
           <div className="hidden md:block">

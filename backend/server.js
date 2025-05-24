@@ -2,7 +2,13 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
+const emailRoutes = require('./src/routes/emailRoutes')
 
-// Configure CORS to allow requests from your frontend origin
-app.use(cors({ origin: 'https://5173-firebase-governgit-1747930796647.cluster-3gc7bglotjgwuxlqpiut7yyqt4.cloudworkstations.dev' }));
+const PORT = process.env.PORT ;
+app.use(cors());
+app.use(bodyParser.json())
+app.use('/', emailRoutes)
+
+console.log(`listen to server at port ${PORT}`)
