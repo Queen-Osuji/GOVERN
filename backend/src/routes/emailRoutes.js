@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.post('/api/send-email', async (req, res) => {
+router.post('/api/email/send-email', async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   // Basic validation (optional, but recommended)
