@@ -131,7 +131,7 @@ const About = () => {
                   {
                     image: "/images/people/person2.jpg",
                     name: "Carlos Mendoza",
-                    role: "Startup Founder",
+                    role: "Founder",
                     quote: "VXP provided us with the perfect digital strategy and tools to launch and scale our startup successfully. Highly recommend!"
                   },
                   {
@@ -143,13 +143,13 @@ const About = () => {
                   {
                     image: "/images/people/person4.jpg",
                     name: "Kenji Tanaka",
-                    role: "E-commerce Owner",
+                    role: "Business Owner",
                     quote: "Since implementing VXP's solutions, our online sales have soared. Their understanding of the digital market is exceptional."
                   },
                   {
                     image: "/images/people/person5.jpg",
                     name: "Lisa Chen",
-                    role: "Fronder",
+                    role: "Founder",
                     quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
                   },
                   {

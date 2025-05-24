@@ -9,7 +9,7 @@ const DigitalShop = () => {
       {
         title: "100 Prompts",
         author: "vxp",
-        price: { usd: "$100.56" },
+        price: { usd: "$300.56" },
         // salePrice: { usd: "$17.00" }, 
         gumroadLink: "https://qosuji.gumroad.com/l/100promptsforprof", // Add Gumroad link
         image: "/images/books/book1.jpg", // Placeholder image
