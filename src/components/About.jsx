@@ -124,27 +124,27 @@ const About = () => {
                 {[
                   {
                     image: "/images/people/person1.jpg",
-                    name: "Sarah Johnson",
+                    name: "Aisha Rahman",
                     role: "Tech Entrepreneur",
-                    quote: "VXP transformed my business with their AI solutions. The ROI has been incredible, and their team's expertise is unmatched."
+                    quote: "VXP's AI solutions have been a game-changer for my business. The level of innovation and support is truly outstanding!"
                   },
                   {
                     image: "/images/people/person2.jpg",
-                    name: "Amara Okafor",
+                    name: "Carlos Mendoza",
                     role: "Startup Founder",
-                    quote: "Working with Queen and the Verve team gave my startup the digital edge we needed. Their strategic approach to digital presence is revolutionary."
+                    quote: "VXP provided us with the perfect digital strategy and tools to launch and scale our startup successfully. Highly recommend!"
                   },
                   {
                     image: "/images/people/person3.jpg",
-                    name: "Lisa Chen",
+                    name: "Sophie Dubois",
                     role: "Creative Director",
-                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
+                    quote: "The digital products developed by VXP are top-notch. They've significantly improved our workflow and client satisfaction."
                   },
                   {
                     image: "/images/people/person4.jpg",
-                    name: "Lisa Chen",
-                    role: "Creative Director",
-                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
+                    name: "Kenji Tanaka",
+                    role: "E-commerce Owner",
+                    quote: "Since implementing VXP's solutions, our online sales have soared. Their understanding of the digital market is exceptional."
                   },
                   {
                     image: "/images/people/person5.jpg",
@@ -154,9 +154,9 @@ const About = () => {
                   },
                   {
                     image: "/images/people/person6.jpg",
-                    name: "Lisa Chen",
-                    role: "Creative Director",
-                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
+                    name: "James Rossi",
+                    role: "Marketing Consultant",
+                    quote: "VXP's insights into digital marketing trends are invaluable. They helped us craft campaigns that delivered impressive results."
                   }
                 ].map((testimonial, index) => (
                   <div key={index} className="bg-purple-950/50 backdrop-blur-sm rounded-lg p-6 border border-purple-800/20 hover:shadow-lg hover:shadow-purple-500/10 transition-all">

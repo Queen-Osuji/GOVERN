@@ -24,7 +24,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-gray-700 bg-gradient-to-b from-purple-950/20 to-black">
+        <section className="py-20 border-t border-zinc-800 bg-gradient-to-b from-purple-950/20 to-black">
            <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Our Values</h2>
              <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto mb-10"></div>
@@ -45,7 +45,7 @@ export default function About() {
            </div>
         </section>
 
-        <section className="py-16 border-t border-gray-700">
+        <section className="py-16 border-t border-zinc-800">
            <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">Our History</h2>
              <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto mb-10"></div>
