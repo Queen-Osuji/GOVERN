@@ -17,9 +17,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['Home', 'About', 'Services', 'AI Store', 'Digital Shop'].map((item) => (
+              {[ 'About', 'Digital Shop'].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-purple-400 transition-all cursor-pointer">
+                  <a href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-400 hover:text-purple-400 transition-all cursor-pointer">
                     {item}
                   </a>
                 </li>
@@ -27,16 +27,16 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-bold mb-4">Resources</h4>
+            {/* <h4 className="text-lg font-bold mb-4">Resources</h4>
             <ul className="space-y-2">
               {['Blog', 'Courses', 'Case Studies', 'FAQ', 'Support'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-all cursor-pointer">
+                  <a href="" className="text-gray-400 hover:text-purple-400 transition-all cursor-pointer">
                     {item}
                   </a>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
           <div>
             <h4 className="text-lg font-bold mb-4">Subscribe to Our Newsletter</h4>
@@ -53,11 +53,6 @@ const Footer = () => {
                 Subscribe
               </button>
             </form>
-            <div className="mt-6 flex items-center space-x-4">
-              <i className="fab fa-cc-visa text-2xl text-gray-400"></i>
-              <i className="fab fa-cc-mastercard text-2xl text-gray-400"></i>
-              <i className="fab fa-paypal text-2xl text-gray-400"></i>
-            </div>
           </div>
         </div>
         <div className="border-t border-purple-900/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -65,9 +60,9 @@ const Footer = () => {
             © {new Date().getFullYear()} VXP & Verve. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Cookie Policy</a>
+            <p className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Privacy Policy</p>
+            <p className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Terms of Service</p>
+            <p className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Cookie Policy</p>
           </div>
         </div>
       </div>

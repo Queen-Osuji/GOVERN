@@ -7,6 +7,7 @@ import DigitalShop from '../components/DigitalShop';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABanner from '../components/CTABanner';
+import FAQ from '../components/FAQ';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Services />
         <DigitalShop />
         <CTABanner />
+        <FAQ />
       </main>
 
       <Footer />
