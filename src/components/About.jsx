@@ -65,7 +65,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-black px-10 my-30">
+    <section id="about" className="py-15 bg-black px-10 my-30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">About <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">VXP & Verve</span></h2>

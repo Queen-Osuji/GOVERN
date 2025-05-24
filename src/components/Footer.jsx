@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -74,7 +75,7 @@ const Footer = () => {
         className="fixed bottom-6 right-6 w-12 h-12 bg-purple-700 rounded-full flex items-center justify-center shadow-lg hover:bg-purple-600 transition-all z-20 cursor-pointer"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <i className="fas fa-arrow-up"></i>
+        <ArrowUp className="w-6 h-6 text-white" />
       </button>
     </footer>
   );
