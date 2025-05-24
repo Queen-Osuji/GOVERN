@@ -45,11 +45,11 @@ const FAQ = () => {
   };
 
   return (
-    <div className="mt-10 md:mt-20 mx-auto max-w-xl md:max-w-4xl px-4 md:px-6 mb-10 md:mb-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Frequently Asked Questions</h2>
+    <div className="mt-10 md:mt-20 mx-auto max-w-xl md:max-w-4xl px-6 md:px-6 mb-20">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 md:mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Frequently Asked Questions</h2>
       {faqData.map((item, index) => (
         <div key={index} className="border-b border-gray-700 py-4">
-          <div className="flex justify-between items-center cursor-pointer text-white hover:text-blue-400 transition-colors duration-200" onClick={() => handleAccordionClick(index)}>
+          <div className="flex justify-between items-center cursor-pointer text-white hover:text-purple-400 transition-colors duration-200" onClick={() => handleAccordionClick(index)}>
             <h3 className="text-lg font-semibold">{item.question}</h3>
             {activeIndex === index ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
           </div>

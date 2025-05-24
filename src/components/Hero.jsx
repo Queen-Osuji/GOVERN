@@ -23,10 +23,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10"> {/* Adjusted padding */} 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"> {/* Adjusted gap */} 
           <div className="space-y-6 md:space-y-8"> {/* Adjusted spacing */} 
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight"> {/* Adjusted text size */} 
-              <span className="block text-3xl">Can You See It ?</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">The Future Is Yours to</span>
-              <span className="block">Create</span>
+            <h2 className="text-3xl md:text-6xl font-bold leading-tight"> {/* Adjusted text size */} 
+              <span className="block">Can You See It ?</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">The Future Is Yours</span>
+              <span className="block">To Create</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-lg"> {/* Adjusted text size */} 
             With our cutting-edge AI solutions and premium digital services, visionary women in business and tech are turning possibilities into realities. Join the movement

@@ -9,7 +9,7 @@ export default function About() {
     <div className="bg-[#080808] text-white min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-grow pt-5">
+      <main className="flex-grow">
         {/* Integrate the existing About component */}
         <AboutComponent />
 
