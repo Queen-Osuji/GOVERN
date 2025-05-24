@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 // Configure Nodemailer transporter
 // Replace with your actual email service provider details and credentials
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com', // e.g., smtp.gmail.com
+  service: 'gmail', 
   port: 587, // or your provider's port
   secure: false, // true for 465, false for other ports
   auth: {
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-router.post('/send-email', async (req, res) => {
+router.post('/api/send-email', async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   // Basic validation (optional, but recommended)
