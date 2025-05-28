@@ -25,7 +25,7 @@ const DigitalShop = () => {
         price: { usd: "$387.00" },
         gumroadLink: "https://qosuji.gumroad.com/l/influncerplaybook",
         image: book2,
-        category: "Business & Strategy",
+        category: "Billionaire & Strategy", // Changed category
       },
       {
         title: "Beginner's Guide to Machine Learning",
@@ -35,13 +35,12 @@ const DigitalShop = () => {
         image: book3,
         category: "AI & Machine Learning",
       },
-      // Add more books with categories here
       {
         title: "Lazy Genuis",
         author: "VXP",
         price: { usd: "$500.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/lazygen",
-        image: book4, // Replace with actual image
+        image: book4, 
         category: "AI & Machine Learning",
       },
       {
@@ -50,7 +49,7 @@ const DigitalShop = () => {
         price: { usd: "$250.00" },
         gumroadLink: "https://example.gumroad.com/l/startupsuccess",
         image: "/images/books/book5.jpg", // Replace with actual image
-        category: "Business & Strategy",
+        category: "Billionaire & Strategy", // Changed category
       },
       {
         title: "The Art of Digital Painting",
@@ -60,10 +59,18 @@ const DigitalShop = () => {
         image: "/images/books/book6.jpg", // Replace with actual image
         category: "Creative Prompts", 
       },
+      {
+        title: "Nurturing New Life: A Guide for Moms",
+        author: "Dr. Parent",
+        price: { usd: "$199.00" },
+        gumroadLink: "https://example.gumroad.com/l/nurturinglife", // Replace with actual Gumroad link
+        image: "/images/books/book7.jpg", // Replace with actual image path
+        category: "Women and Babies", // New category
+      },
     ];
     setProducts(allProducts);
     // Extract unique categories
-    const uniqueCategories = ['All', ...new Set(allProducts.map(p => p.category))];
+    const uniqueCategories = ['All', ...new Set(allProducts.map(p => p.category))].sort(); // Added sort for consistent order
     setCategories(uniqueCategories);
   }, []);
 
