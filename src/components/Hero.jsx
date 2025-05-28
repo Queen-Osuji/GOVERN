@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react'; // Import the ChevronDown icon
+import { ChevronDown } from 'lucide-react'; 
+import heroImage from '../assets/images/Hero_image.jpg'
 
 const Hero = () => {
   const handleScrollDown = (e) => {
@@ -14,7 +15,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden px-10">
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/Hero_image.jpg"
+          src={heroImage}
           alt="Futuristic digital landscape"
           className="w-full h-full object-cover object-top"
         />

@@ -9,12 +9,12 @@ const transporter = nodemailer.createTransport({
   port: 587, // or your provider's port
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER, // Your email address (use environment variable)
-    pass: process.env.EMAIL_PASS, // Your email password (use environment variable)
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS, 
   },
 });
 
-router.post('/api/email/send-email', async (req, res) => {
+router.post('/send-email', async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   // Basic validation (optional, but recommended)

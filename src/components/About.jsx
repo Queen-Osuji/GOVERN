@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
+import ceoImage from '../assets/images/ceo.jpg'
 
 const About = () => {
   useEffect(() => {
@@ -75,7 +76,7 @@ const About = () => {
           <div className="relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl shadow-purple-500/20">
               <img
-                src="/images/ceo.jpg"
+                src={ceoImage}
                 alt="Queen Osuji"
                 className="w-full h-full object-cover"
               />

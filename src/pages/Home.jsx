@@ -3,7 +3,6 @@ import React from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
-import DigitalShop from '../components/DigitalShop';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CTABanner from '../components/CTABanner';
@@ -18,7 +17,6 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
-        <DigitalShop />
         <CTABanner />
         <FAQ />
       </main>

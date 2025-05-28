@@ -1,49 +1,104 @@
 import React, { useState, useEffect } from 'react';
+import book1 from "../assets/images/books/book1.jpg"
+import book2 from "../assets/images/books/book2.png"
+import book3 from "../assets/images/books/book3.jpg"
+import book4 from "../assets/images/books/book4.png"
 
 const DigitalShop = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
-    // Initially load only two books
-    const initialProducts = [
+    const allProducts = [
       {
         title: "100 Prompts",
         author: "vxp",
         price: { usd: "$300.56" },
-        // salePrice: { usd: "$17.00" }, 
-        gumroadLink: "https://qosuji.gumroad.com/l/100promptsforprof", // Add Gumroad link
-        image: "/images/books/book1.jpg", // Placeholder image
+        gumroadLink: "https://qosuji.gumroad.com/l/100promptsforprof",
+        image: book1,
+        category: "Creative Prompts",
       },
       {
         title: "The Influence Playbook",
         author: "vxp",
         price: { usd: "$387.00" },
-        // No sale price for the second book
-        gumroadLink: "https://qosuji.gumroad.com/l/influncerplaybook", // Add Gumroad link
-        image: "/images/books/book2.png", // Placeholder image
+        gumroadLink: "https://qosuji.gumroad.com/l/influncerplaybook",
+        image: book2,
+        category: "Business & Strategy",
       },
       {
         title: "Beginner's Guide to Machine Learning",
         author: "vxp",
         price: { usd: "$300.00" },
-        // No sale price for the second book
-        gumroadLink: "https://qosuji.gumroad.com/l/aiforbusiness", // Add Gumroad link
-        image: "/images/books/book3.jpg", // Placeholder image
+        gumroadLink: "https://qosuji.gumroad.com/l/aiforbusiness",
+        image: book3,
+        category: "AI & Machine Learning",
+      },
+      // Add more books with categories here
+      {
+        title: "Lazy Genuis",
+        author: "VXP",
+        price: { usd: "$500.00" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/lazygen",
+        image: book4, // Replace with actual image
+        category: "AI & Machine Learning",
+      },
+      {
+        title: "Startup Success Stories",
+        author: "Entrepreneur X",
+        price: { usd: "$250.00" },
+        gumroadLink: "https://example.gumroad.com/l/startupsuccess",
+        image: "/images/books/book5.jpg", // Replace with actual image
+        category: "Business & Strategy",
+      },
+      {
+        title: "The Art of Digital Painting",
+        author: "Pixel Master",
+        price: { usd: "$150.00" },
+        gumroadLink: "https://example.gumroad.com/l/digitalpainting",
+        image: "/images/books/book6.jpg", // Replace with actual image
+        category: "Creative Prompts", 
       },
     ];
-    setProducts(initialProducts);
+    setProducts(allProducts);
+    // Extract unique categories
+    const uniqueCategories = ['All', ...new Set(allProducts.map(p => p.category))];
+    setCategories(uniqueCategories);
   }, []);
+
+  const filteredProducts = selectedCategory === 'All'
+    ? products
+    : products.filter(product => product.category === selectedCategory);
 
   return (
     <section id="digital-shop" className="py-30 bg-black px-10 mt-10">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12"> {/* Adjusted margin */} 
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Digital <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Shop</span></h2>
           <p className="text-gray-300 max-w-2xl mx-auto">Explore our collection of digital books to empower your journey.</p>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto mt-4"></div>
         </div>
+
+        {/* Category Filters */} 
+        <div className="flex justify-center space-x-2 sm:space-x-4 mb-12 flex-wrap"> 
+          {categories.map(category => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 mb-2 sm:mb-0 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 ease-in-out 
+                ${selectedCategory === category 
+                  ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg shadow-purple-500/30'
+                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'}
+              `}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => (
             <div key={index} className="bg-gradient-to-br from-purple-900/20 to-black border border-purple-800/20 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-purple-500/10 transition-all group">
               <div className="relative h-60 w-40 mx-auto mt-6 overflow-hidden rounded-md"> {/* Adjusted size and added margin */}
                 <img
@@ -88,7 +143,7 @@ const DigitalShop = () => {
                   // onClick={() => { console.log('Add to Cart clicked for:', product.title); }}
                   onClick={() => window.open(product.gumroadLink, '_blank')}
                   className="w-full bg-gradient-to-r from-purple-600 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all !rounded-button whitespace-nowrap cursor-pointer"
->
+                >
                   Purchase Now
                 </button>
               </div>

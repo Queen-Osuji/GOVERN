@@ -18,7 +18,7 @@ const Contact = () => {
     e.preventDefault();
     console.log('Form submitted:', formData);
 
-    fetch('https://5000-firebase-governgit-1747930796647.cluster-3gc7bglotjgwuxlqpiut7yyqt4.cloudworkstations.dev/api/send-email', {
+    fetch('http://localhost:5000/api/email/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,14 +1,14 @@
-require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+const emailRoutes = require('./src/routes/email');
 const app = express();
-const emailRoutes = require('./src/routes/emailRoutes')
+require('dotenv').config();
+const PORT = process.env.PORT || 5000;
 
-const PORT = process.env.PORT ;
 app.use(cors());
-app.use(bodyParser.json())
-app.use('/', emailRoutes)
+app.use(express.json());
+app.use('/api/email', emailRoutes);
 
-console.log(`listen to server at port ${PORT}`)
+app.listen(PORT, () => {
+  console.log(`listen to server at port ${PORT}`);
+});
