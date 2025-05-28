@@ -3,12 +3,13 @@ import book1 from "../assets/images/books/book1.jpg"
 import book2 from "../assets/images/books/book2.png"
 import book3 from "../assets/images/books/book3.jpg"
 import book4 from "../assets/images/books/book4.png"
+import productCategories from "../data/productCategories"
 
 const DigitalShop = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
-
+ 
   useEffect(() => {
     const allProducts = [
       {
@@ -69,9 +70,7 @@ const DigitalShop = () => {
       },
     ];
     setProducts(allProducts);
-    // Extract unique categories
-    const uniqueCategories = ['All', ...new Set(allProducts.map(p => p.category))].sort(); // Added sort for consistent order
-    setCategories(uniqueCategories);
+    setCategories(productCategories);
   }, []);
 
   const filteredProducts = selectedCategory === 'All'
@@ -88,21 +87,21 @@ const DigitalShop = () => {
         </div>
 
         {/* Category Filters */} 
-        <div className="flex justify-center space-x-2 sm:space-x-4 mb-12 flex-wrap"> 
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 mb-2 sm:mb-0 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 ease-in-out 
-                ${selectedCategory === category 
-                  ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg shadow-purple-500/30'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'}
-              `}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        <div className="flex justify-center space-x-2 sm:space-x-4 mb-12 flex-wrap">
+ {categories.map(category => (
+ <button
+ key={category}
+ onClick={() => setSelectedCategory(category)}
+ className={`px-4 py-2 mb-2 sm:mb-0 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 ease-in-out
+ ${selectedCategory === category
+ ? 'bg-gradient-to-r from-purple-600 to-purple-800 text-white shadow-lg shadow-purple-500/30'
+ : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'}
+ `}
+ >
+ {category}
+ </button>
+ ))}
+ </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, index) => (

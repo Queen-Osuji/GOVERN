@@ -7,10 +7,8 @@ import DigitalShop from '../components/DigitalShop';
 
 export default function DigitalShopPage() {
   return (
-    <div className="bg-[#080808] text-white min-h-screen flex flex-col">
-      <Header />
-
-      <main className="flex-grow pt-20">
+    <div className="text-white flex flex-col">
+      <main className="flex-grow pt-10">
         <DigitalShop />
       </main>
 
