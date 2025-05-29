@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
+import { peopleData } from '../data/peopleData'; // Import the people data
 import ceoImage from '../assets/images/ceo.jpg'
 
 const About = () => {
@@ -122,44 +123,7 @@ const About = () => {
             <div className="relative z-10">
               <h3 className="text-2xl font-bold mb-6 text-center">What Our Clients Say</h3>
               <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    image: "/images/people/person1.jpg",
-                    name: "Aisha Rahman",
-                    role: "Tech Entrepreneur",
-                    quote: "VXP's AI solutions have been a game-changer for my business. The level of innovation and support is truly outstanding!"
-                  },
-                  {
-                    image: "/images/people/person2.jpg",
-                    name: "Carlos Mendoza",
-                    role: "Founder",
-                    quote: "VXP provided us with the perfect digital strategy and tools to launch and scale our startup successfully. Highly recommend!"
-                  },
-                  {
-                    image: "/images/people/person3.jpg",
-                    name: "Sophie Dubois",
-                    role: "Creative Director",
-                    quote: "The digital products developed by VXP are top-notch. They've significantly improved our workflow and client satisfaction."
-                  },
-                  {
-                    image: "/images/people/person4.jpg",
-                    name: "Kenji Tanaka",
-                    role: "Business Owner",
-                    quote: "Since implementing VXP's solutions, our online sales have soared. Their understanding of the digital market is exceptional."
-                  },
-                  {
-                    image: "/images/people/person5.jpg",
-                    name: "Lisa Chen",
-                    role: "Founder",
-                    quote: "The digital products from VXP have streamlined our creative processes and helped us scale our agency beyond what we thought possible."
-                  },
-                  {
-                    image: "/images/people/person6.jpg",
-                    name: "James Rossi",
-                    role: "Marketing Consultant",
-                    quote: "VXP's insights into digital marketing trends are invaluable. They helped us craft campaigns that delivered impressive results."
-                  }
-                ].map((testimonial, index) => (
+                {peopleData.map((testimonial, index) => ( // Use the imported peopleData
                   <div key={index} className="bg-purple-950/50 backdrop-blur-sm rounded-lg p-6 border border-purple-800/20 hover:shadow-lg hover:shadow-purple-500/10 transition-all">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 rounded-full overflow-hidden mr-4">

@@ -18,7 +18,6 @@ export default function Home() {
         <About />
         <Services />
         <CTABanner />
-        {/* <FAQ /> */}
       </main>
 
       <Footer />

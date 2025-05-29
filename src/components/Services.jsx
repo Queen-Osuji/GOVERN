@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import ServiceDetailModal from './ui/ServiceDetailModal'; // Adjust path if needed
-// Import Lucide icons
+import ServiceDetailModal from './ui/ServiceDetailModal'; 
 import {
   Palette,
   Laptop,
   Brain,
   LineChart,
   Smartphone,
-  Cpu, // Using Cpu as a more generic 'Custom AI Solutions' icon
+  Cpu, 
   Search,
-  PenTool, // Using PenTool for UI/UX
-  Megaphone // Using Megaphone for Digital Marketing
+  PenTool, 
+  Megaphone 
 } from 'lucide-react';
 
 const Services = () => {

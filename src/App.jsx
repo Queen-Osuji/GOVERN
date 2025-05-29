@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import FAQPage from './pages/FAQPage';
 import Contact from './pages/Contact';
 import Header from './components/Header';
+import GetStartedPage from './pages/GetStartedPage';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
       <Route path="/digital-shop" element={<DigitalShop />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/faq" element={<FAQPage />} />
+      <Route path="/get-started" element={<GetStartedPage />} />
     </Routes>
   </div>
  );
