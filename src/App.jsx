@@ -6,7 +6,6 @@ import FAQPage from './pages/FAQPage';
 import Contact from './pages/Contact';
 import Header from './components/Header';
 import Home from './pages/Home'; // Make sure to import Home component
-import GetStartedPage from './pages/GetStartedPage';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -37,7 +36,6 @@ function App() {
       <Route path="/digital-shop" element={<DigitalShop />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/faq" element={<FAQPage />} />
-      <Route path="/get-started" element={<GetStartedPage />} />
     </Routes>
   </div>
  );
