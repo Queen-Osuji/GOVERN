@@ -84,24 +84,8 @@ const GetStartedPage = () => {
 
     setSubmissionStatus('loading');
 
-    // Construct the email body from the form data
-    const emailSubject = `New Service Request: ${formData.services.join(', ')}`;
-    const emailMessage = `
-      Service(s) Interested In: ${formData.services.join(', ') || 'Not specified'}
-      Estimated Budget: ${formData.budget || 'Not specified'}
-      Desired Timeline: ${formData.timeline || 'Not specified'}
-
-      Project Description:
-      ${formData.projectDescription}
-
-      Contact Information:
-      Name: ${formData.contactName}
-      Email: ${formData.contactEmail}
-      Phone: ${formData.contactPhone || 'Not provided'}
-    `;
-
     // Send the form data to the backend email endpoint
-    fetch('/api/email/send-email', {
+ fetch('/api/services/submit-service-request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -109,9 +93,8 @@ const GetStartedPage = () => {
       body: JSON.stringify({
         name: formData.contactName,
         email: formData.contactEmail, // Sender's email (used as reply-to)
-        subject: emailSubject,
-        message: emailMessage, // The full form data as the message body
-      }),
+        ...formData, // Send the entire formData object
+ }),
     })
     .then(response => {
       if (!response.ok) {

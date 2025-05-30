@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react'; // Import icons
 
-const Header = ({ isPlaying, togglePlayPause }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+const Header = ({ isPlaying, togglePlay }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+ const [scrollPosition, setScrollPosition] = useState(0);
 
  useEffect(() => {
     const handleScroll = () => setScrollPosition(window.scrollY);
@@ -14,7 +14,7 @@ const Header = ({ isPlaying, togglePlayPause }) => {
   };
 
   const mobileMenuClasses = `fixed inset-y-0 right-0 z-50 w-64 bg-black shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`;
-
+  
   const headerClasses = `fixed top-0 z-50 w-full transition-all duration-300 ${scrollPosition > 50 ? 'bg-black/80 backdrop-blur-md shadow-lg' : 'bg-transparent'} border-b border-purple-900/30`;
   const simpleButtonClass = `text-white hover:text-purple-400 transition-colors rounded-full p-2 flex justify-center items-center focus:outline-none ${isPlaying ? 'bg-purple-700' : 'bg-gray-700'}`;
  return (
@@ -28,11 +28,10 @@ const Header = ({ isPlaying, togglePlayPause }) => {
               </h1>
             </a>
           </div>
-
-
+          
           <div className="hidden md:flex items-center space-x-3 mr-4">
-            <button onClick={togglePlayPause} className={simpleButtonClass}>
-
+            <button onClick={togglePlay} className={simpleButtonClass}>
+              
               {isPlaying && <Pause size={22} />}
               {!isPlaying && <Play size={22} />}
             </button>
@@ -44,10 +43,10 @@ const Header = ({ isPlaying, togglePlayPause }) => {
             <a href="/contact" className="hover:text-purple-400 transition-colors">Contact</a>
             <a href="/faq" className="hover:text-purple-400 transition-colors">FAQ</a>
           </nav>
-
+          
           <div className="md:hidden flex items-center space-x-3">
             {/* Simplified Audio Control - Mobile */}
-            <button onClick={togglePlayPause} className={simpleButtonClass}>
+            <button onClick={togglePlay} className={simpleButtonClass}>              
             {isPlaying && <Pause size={22} />}
             {!isPlaying && <Play size={22} />}
             </button>
@@ -77,15 +76,13 @@ const Header = ({ isPlaying, togglePlayPause }) => {
             <a href="#contact" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Contact</a>
           </nav>
 
-
           {/* Simplified Audio Control - Inside Mobile Menu (Optional, or remove if only needed next to hamburger) */}
           <div className="mt-8 pt-6 border-t border-zinc-800 flex justify-center">
-            <button onClick={() => { togglePlayPause(); toggleMenu(); }} className={simpleButtonClass}>
+            <button onClick={() => { togglePlay(); toggleMenu(); }} className={simpleButtonClass}>
             {isPlaying && <Pause size={22} />}
             {!isPlaying && <Play size={22} />}
             </button>
           </div>
-
         </div>
       </div>
     </header>

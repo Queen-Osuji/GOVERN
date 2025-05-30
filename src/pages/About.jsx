@@ -7,8 +7,6 @@ import AboutComponent from '../components/About'; // Import the About component
 export default function About() {
   return (
     <div className="bg-[#080808] text-white min-h-screen flex flex-col">
-      <Header />
-
       <main className="flex-grow">
         {/* Integrate the existing About component */}
         <AboutComponent />
