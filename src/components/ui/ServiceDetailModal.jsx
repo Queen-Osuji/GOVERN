@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+// import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const ServiceDetailModal = ({ isOpen, onClose, service }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  // const navigate = useNavigate(); // Initialize useNavigate
 
   if (!isOpen || !service) return null;
 
@@ -12,7 +12,7 @@ const ServiceDetailModal = ({ isOpen, onClose, service }) => {
     // Close the modal first
     onClose();
     // Then navigate to the Get Started page, passing the service data
-    navigate('/get-started');
+    // navigate('/get-started');
   };
 
 
@@ -30,7 +30,7 @@ const ServiceDetailModal = ({ isOpen, onClose, service }) => {
           {service.icon && (
             <div className="w-20 h-20 bg-purple-700 rounded-lg flex items-center justify-center mb-6 mx-auto">
               {/* Assuming service.icon is a string like 'code' for Font Awesome */}
-              <i className={`fas fa-${service.icon} text-4xl text-white`}></i>
+              {service.icon && React.createElement(service.icon, { size: 32, className: "text-white" })}
             </div>
           )}
           <h3 className="text-3xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-yellow-300">{service.title}</h3>
@@ -49,12 +49,11 @@ const ServiceDetailModal = ({ isOpen, onClose, service }) => {
         <p className="text-purple-400 font-medium text-lg text-center mb-6">Price: {service.price}</p>
 
         <div className="text-center mt-8">
-          {/* This button is now the "Get Started" button */}
           <button
             onClick={handleGetStartedClick} // Call the new handler
             className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
           >
-            Get Started
+            Close
           </button>
         </div>
       </div>

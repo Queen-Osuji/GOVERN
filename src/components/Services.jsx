@@ -130,7 +130,7 @@ const Services = () => {
                   {service.icon && React.createElement(service.icon, { size: 32, className: "text-white" })}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-300 mb-6 h-20 overflow-hidden text-ellipsis">{service.description}</p> {/* Added height and overflow for consistency */}
+                <p className="text-gray-300 mb-6 h-20 overflow-hidden text-ellipsis">{service.description}</p> 
                 <div className="flex justify-between items-center">
                   <span className="text-purple-400 font-medium">{service.price}</span>
                   <button 

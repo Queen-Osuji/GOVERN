@@ -11,14 +11,14 @@ const CTABanner = () => {
           Join thousands of satisfied clients who have transformed their operations with Verve's innovative AI solutions and expert-led courses. 
           Let's build the future, together.
         </p>
-        <div className="space-x-4 py-5">
+        {/* <div className="space-x-4 py-5">
           <button 
             className="bg-purple-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-purple-500 transition-colors duration-300 transform hover:scale-105"
             onClick={() => navigate('/contact')} 
           >
             Contact Us
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
