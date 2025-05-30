@@ -40,7 +40,6 @@ const Header = ({ isPlaying, togglePlay }) => {
           <nav className="hidden md:flex space-x-4 lg:space-x-6 xl:space-x-8 text-gray-300 font-medium">
             <a href="/about" className="hover:text-purple-400 transition-colors">About</a>
             <a href="/digital-shop" className="hover:text-purple-400 transition-colors">Digital Shop</a>
-            <a href="/contact" className="hover:text-purple-400 transition-colors">Contact</a>
             <a href="/faq" className="hover:text-purple-400 transition-colors">FAQ</a>
           </nav>
           

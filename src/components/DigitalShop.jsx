@@ -3,9 +3,12 @@ import book1 from "../assets/images/books/book1.jpg"
 import book2 from "../assets/images/books/book2.png"
 import book3 from "../assets/images/books/book3.jpg"
 import book4 from "../assets/images/books/book4.png"
+import book5 from "../assets/images/books/book5.jpg"
+import book6 from "../assets/images/books/book6.png"
 import productCategories from "../data/productCategories"
 
-const DigitalShop = () => {
+const 
+DigitalShop = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -14,59 +17,51 @@ const DigitalShop = () => {
     const allProducts = [
       {
         title: "100 Prompts",
-        author: "vxp",
-        price: { usd: "$300.56" },
-        gumroadLink: "https://qosuji.gumroad.com/l/100promptsforprof",
+        author: "Versatile.co",
+        price: { usd: "$299.00" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/100promptsforprof?layout=profile",
         image: book1,
-        category: "Creative Prompts",
+        category: "AI & Machine Learning",
       },
       {
-        title: "The Influence Playbook",
-        author: "vxp",
-        price: { usd: "$387.00" },
-        gumroadLink: "https://qosuji.gumroad.com/l/influncerplaybook",
+        title: "The Influencer Playbook",
+        author: "Versatile.co",
+        price: { usd: "$1,200" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/influncerplaybook",
         image: book2,
         category: "Billionaire & Strategy", // Changed category
       },
       {
-        title: "Beginner's Guide to Machine Learning",
-        author: "vxp",
-        price: { usd: "$300.00" },
-        gumroadLink: "https://qosuji.gumroad.com/l/aiforbusiness",
+        title: "AI for Business (Beginner's Guide)",
+        author: "Versatile.co",
+        price: { usd: "$299.00" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/aiforbusiness",
         image: book3,
         category: "AI & Machine Learning",
       },
       {
         title: "Lazy Genuis",
-        author: "VXP",
+        author: "Versatile.co",
         price: { usd: "$500.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/lazygen",
-        image: book4, 
+        image: book5, 
         category: "AI & Machine Learning",
       },
       {
-        title: "Startup Success Stories",
-        author: "Entrepreneur X",
-        price: { usd: "$250.00" },
-        gumroadLink: "https://example.gumroad.com/l/startupsuccess",
-        image: "/images/books/book5.jpg", // Replace with actual image
-        category: "Billionaire & Strategy", // Changed category
+        title: "AI SYMBIOSIS",
+        author: "Versatile.co",
+        price: { usd: "$1,499" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/aisym?layout=profile",
+        image: book4, 
+        category: "AI & Machine Learning", 
       },
       {
-        title: "The Art of Digital Painting",
-        author: "Pixel Master",
-        price: { usd: "$150.00" },
-        gumroadLink: "https://example.gumroad.com/l/digitalpainting",
-        image: "/images/books/book6.jpg", // Replace with actual image
-        category: "Creative Prompts", 
-      },
-      {
-        title: "Nurturing New Life: A Guide for Moms",
-        author: "Dr. Parent",
-        price: { usd: "$199.00" },
-        gumroadLink: "https://example.gumroad.com/l/nurturinglife", // Replace with actual Gumroad link
-        image: "/images/books/book7.jpg", // Replace with actual image path
-        category: "Women and Babies", // New category
+        title: "TABLOIDS",
+        author: "Versatile.co",
+        price: { usd: "$1,999" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/tab",
+        image: book6, 
+        category: "Billionaire & Strategy", 
       },
     ];
     setProducts(allProducts);
