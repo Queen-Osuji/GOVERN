@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-black pt-20 pb-10 border-t border-purple-900/30">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-3 gap-20">
           <div className="md:col-span-1">
             <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-yellow-400 mb-4">
               VXP<span className="text-white">.</span>
@@ -27,32 +27,32 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            {/* <h4 className="text-lg font-bold mb-4">Resources</h4>
-            <ul className="space-y-2">
-              {['Blog', 'Courses', 'Case Studies', 'FAQ', 'Support'].map((item) => (
-                <li key={item}>
-                  <a href="" className="text-gray-400 hover:text-purple-400 transition-all cursor-pointer">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul> */}
-          </div>
-          <div>
             <h4 className="text-lg font-bold mb-4">Subscribe to Our Newsletter</h4>
             <p className="text-gray-400 mb-4">Stay updated with our latest news and offers.</p>
-            <form className="space-y-3">
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="w-full bg-purple-900/30 border border-purple-800/50 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 border-none"
-                />
+            <div id="mc_embed_shell">
+              <div id="mc_embed_signup">
+              <form action="https://gmail.us20.list-manage.com/subscribe/post?u=eac40d3f212691cc35c33b745&amp;id=fa7ab41afe&amp;f_id=008b85e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank">
+                  <div id="mc_embed_signup_scroll">
+                    <div className="w-full flex flex-col gap-2">
+                      <input type="email" name="EMAIL" className="required email w-full bg-purple-900/30 border border-purple-800/50 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 border-none" id="mce-EMAIL" required="" defaultValue="" />
+                    </div>
+                    <div id="mce-responses" className="clear foot">
+                      <div className="response" id="mce-error-response" style={{ display: 'none' }}></div>
+                      <div className="response" id="mce-success-response" style={{ display: 'none' }}></div>
+                    </div>
+                    <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
+                      {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
+                      <input type="text" name="b_eac40d3f212691cc35c33b745_fa7ab41afe" tabIndex="-1" defaultValue="" />
+                    </div>
+                    <div className="py-5">
+                      <div className="flex">
+                        <input type="submit" name="subscribe" id="mc-embedded-subscribe" className="w-full bg-gradient-to-r from-purple-600 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all !rounded-button whitespace-nowrap cursor-pointer" value="Subscribe" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <button className="w-full bg-gradient-to-r from-purple-600 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all !rounded-button whitespace-nowrap cursor-pointer">
-                Subscribe
-              </button>
-            </form>
+            </div>
           </div>
         </div>
         <div className="border-t border-purple-900/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
