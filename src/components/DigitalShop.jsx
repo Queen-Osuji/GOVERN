@@ -22,6 +22,7 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/100promptsforprof?layout=profile",
         image: book1,
         category: "AI & Machine Learning",
+ rating: 5,
       },
       {
         title: "The Influencer Playbook",
@@ -29,7 +30,8 @@ DigitalShop = () => {
         price: { usd: "$1,200" },
         gumroadLink: "https://vxpturf.gumroad.com/l/influncerplaybook",
         image: book2,
-        category: "Billionaire & Strategy", // Changed category
+        category: "Billionaire & Strategy",
+ rating: 4.5,
       },
       {
         title: "AI for Business (Beginner's Guide)",
@@ -37,6 +39,7 @@ DigitalShop = () => {
         price: { usd: "$299.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/aiforbusiness",
         image: book3,
+ rating: 4,
         category: "AI & Machine Learning",
       },
       {
@@ -44,7 +47,8 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$500.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/lazygen",
-        image: book5, 
+        image: book5,
+ rating: 3.5,
         category: "AI & Machine Learning",
       },
       {
@@ -52,8 +56,9 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$1,499" },
         gumroadLink: "https://vxpturf.gumroad.com/l/aisym?layout=profile",
-        image: book4, 
-        category: "AI & Machine Learning", 
+        image: book4,
+        category: "AI & Machine Learning",
+ rating: 5,
       },
       {
         title: "TABLOIDS",
@@ -61,7 +66,8 @@ DigitalShop = () => {
         price: { usd: "$1,999" },
         gumroadLink: "https://vxpturf.gumroad.com/l/tab",
         image: book6, 
-        category: "Billionaire & Strategy", 
+        category: "Billionaire & Strategy",
+ rating: 4.5,
       },
     ];
     setProducts(allProducts);
@@ -116,15 +122,24 @@ DigitalShop = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-1 text-white">{product.title}</h3>
                 <p className="text-gray-400 text-sm mb-2">{product.author}</p> {/* Placeholder author */}
+                {/* Dynamic Rating */}
+                {(() => {
+                    const rating = product.rating || 0; // Default to 0 if rating is not available
+                    const filledStars = Math.floor(rating);
+                    const hasHalfStar = rating % 1 !== 0;
+                    return (
                 <div className="flex items-center mb-3">
-                  {/* Placeholder Rating */}
-                  {[...Array(4)].map((_, i) => ( // Changed to 4 stars as in the image
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                  {[...Array(filledStars)].map((_, i) => (
+                    <svg key={`filled-${i}`} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
                       <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
                     </svg>
                   ))}
- <span className="ml-2 text-sm text-gray-400">(4.5)</span> {/* Placeholder rating value */}
+                  {hasHalfStar && (
+ <svg className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24"><path d="M12 0.587L12 22.028L4.583 25.999L6.064 17.721L0 11.996L8.332 10.845L12 2.587Z"/></svg>
+ )}
+ <span className="ml-2 text-sm text-gray-400">({rating.toFixed(1)})</span>
                 </div>
+ ); })()}
 
                 <div className="flex justify-between items-center mb-4">
                   {/* Prices */}
