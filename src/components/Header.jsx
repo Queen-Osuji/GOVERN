@@ -31,6 +31,7 @@ const Header = ({ isPlaying, togglePlay }) => {
           
           <div className="hidden md:flex items-center space-x-3 mr-4">
             <button onClick={togglePlay} className={simpleButtonClass}>
+
               
               {isPlaying && <Pause size={22} />}
               {!isPlaying && <Play size={22} />}
@@ -40,6 +41,7 @@ const Header = ({ isPlaying, togglePlay }) => {
           <nav className="hidden md:flex space-x-4 lg:space-x-6 xl:space-x-8 text-gray-300 font-medium">
             <a href="/about" className="hover:text-purple-400 transition-colors">About</a>
             <a href="/digital-shop" className="hover:text-purple-400 transition-colors">Digital Shop</a>
+ <a href="/ai-models" className="hover:text-purple-400 transition-colors">AI Models</a>
             <a href="/faq" className="hover:text-purple-400 transition-colors">FAQ</a>
           </nav>
           
@@ -72,6 +74,7 @@ const Header = ({ isPlaying, togglePlay }) => {
             <a href="/" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Home</a>
             <a href="/about" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">About</a>
             <a href="/digital-shop" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Digital Shop</a>
+ <a href="/ai-models" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">AI Models</a>
             <a href="#contact" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Contact</a>
           </nav>
 
