@@ -102,7 +102,7 @@ const AIMarketplace = () => {
               </div>
             ) : (
               <div className="flex items-center mb-4">
-                <span className="text-sm text-gray-400">Rating: Coming Soon</span>
+                <span className="text-md text-gray-500 font-bold">Beta Testing</span>
               </div>
             )}
             <div className="flex justify-between space-x-4 mt-auto">
