@@ -103,7 +103,7 @@ const AIMarketplace = () => {
             <div className="flex justify-between space-x-4 mt-auto">
               <button
                 onClick={() => openModal(model)}
-                className="flex-1 bg-purple-900/30 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                className="flex-1 bg-purple-900/30 hover:bg-purple-500/20 text-white font-bold py-2 px-4 rounded"
               >
                 Learn More
               </button>
