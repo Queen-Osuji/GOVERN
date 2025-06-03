@@ -17,7 +17,7 @@ const ComingSoonModal = ({ model, isOpen, onClose }) => {
             <img src={model.image} alt={model.name} className="w-24 h-24 object-cover rounded-full mb-4 border-2 border-purple-600" />
             <h2 className="text-2xl font-bold mb-2 text-center">{model.name}</h2>
             <p className="text-gray-300 text-sm mb-4 text-center">{model.tagline}</p>
-            <p className="text-xl font-semibold mt-2">Still in build</p>
+            <p className="text-xl font-semibold mt-2">Under Beta Testing</p>
             <p className="text-lg text-gray-300">Coming soon!</p>
           </>
         )}
