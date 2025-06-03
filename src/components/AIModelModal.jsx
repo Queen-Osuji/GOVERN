@@ -27,14 +27,14 @@ const AIModelModal = ({ model, isOpen, onClose }) => {
             <div className="w-full md:w-2/3 p-6 mt-10">
               <h3 className="text-xl font-semibold mb-3">Description</h3>
               <p className="text-gray-300 mb-6">{model.description}</p>
-              <a
+              {/* <a
                 href={model.gumroadLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-purple-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition duration-200"
               >
                 Purchase
-              </a>
+              </a> */}
             </div>
           </div>
         )}
