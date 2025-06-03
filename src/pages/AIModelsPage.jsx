@@ -47,6 +47,7 @@ const AIMarketplace = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
   const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
+  const [selectedComingSoonModel, setSelectedComingSoonModel] = useState(null);
 
   const openModal = useCallback((model) => {
     setSelectedModel(model);
@@ -59,6 +60,7 @@ const AIMarketplace = () => {
   }, []);
 
   const openComingSoonModal = () => {
+    setSelectedComingSoonModel(model);
     setIsComingSoonModalOpen(true);
   };
 
@@ -106,7 +108,10 @@ const AIMarketplace = () => {
                 Learn More
               </button>
               <button
-                onClick={openComingSoonModal}
+                onClick={() => {
+                  setSelectedComingSoonModel(model);
+                  setIsComingSoonModalOpen(true);
+                }}
                 className="flex-1 text-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
               >Unlock Access
               </button>
@@ -127,6 +132,7 @@ const AIMarketplace = () => {
       {/* Render the Coming Soon modal */}
       {isComingSoonModalOpen && (
         <ComingSoonModal
+          model={selectedComingSoonModel}
           isOpen={isComingSoonModalOpen}
           onClose={() => setIsComingSoonModalOpen(false)}
         />
