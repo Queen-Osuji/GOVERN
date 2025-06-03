@@ -1,5 +1,6 @@
 
 import React, { useState, useCallback } from 'react';
+import ComingSoonModal from '../components/ComingSoonModal';
 import AIModelModal from '../components/AIModelModal'; // Import the modal component
 import ai1 from '../assets/images/models/ai1.jpg'
 import ai2 from '../assets/images/models/ai2.jpg'
@@ -45,6 +46,7 @@ const aiModelsData = [
 const AIMarketplace = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
+  const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
 
   const openModal = useCallback((model) => {
     setSelectedModel(model);
@@ -56,12 +58,16 @@ const AIMarketplace = () => {
     setSelectedModel(null);
   }, []);
 
+  const openComingSoonModal = () => {
+    setIsComingSoonModalOpen(true);
+  };
+
   return (
     <>
       <div className="flex pt-30">
       <div className="flex flex-col mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-15 text-white">AI Models</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-10 md:mx-50">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-10 md:mx-30">
         {aiModelsData.map((model, index) => (
           <div key={index} className="bg-gradient-to-br from-purple-900/20 to-black border border-purple-800/20 rounded-xl  shadow-md p-6 text-white flex flex-col">
             <img src={model.image} alt={model.name} className="w-full h-50 object-cover rounded-md mb-4" />
@@ -99,13 +105,11 @@ const AIMarketplace = () => {
               >
                 Learn More
               </button>
-              <a
-              href={model.gumroadLink}
-              target="_blank"
-                rel="noopener noreferrer" // Good practice for target="_blank"
-                className="flex-1 text-center bg-purple-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >Unlock Access
-            </a>
+              <button
+                onClick={openComingSoonModal}
+                className="flex-1 text-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+              >Unlock Access
+              </button>
             </div>
            </div>
         ))}
@@ -118,6 +122,13 @@ const AIMarketplace = () => {
           model={selectedModel}
           isOpen={isModalOpen}
           onClose={closeModal}
+        />
+      )}
+      {/* Render the Coming Soon modal */}
+      {isComingSoonModalOpen && (
+        <ComingSoonModal
+          isOpen={isComingSoonModalOpen}
+          onClose={() => setIsComingSoonModalOpen(false)}
         />
       )}
     </>
