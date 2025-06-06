@@ -22,7 +22,7 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/100promptsforprof?layout=profile",
         image: book1,
         category: "AI & Machine Learning",
- rating: 5,
+        rating: 5,
       },
       {
         title: "The Influencer Playbook",
@@ -31,7 +31,7 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/influncerplaybook",
         image: book2,
         category: "Billionaire & Strategy",
- rating: 4.5,
+        rating: 4.5,
       },
       {
         title: "AI for Business (Beginner's Guide)",
@@ -39,7 +39,7 @@ DigitalShop = () => {
         price: { usd: "$299.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/aiforbusiness",
         image: book3,
- rating: 4,
+        rating: 4,
         category: "AI & Machine Learning",
       },
       {
@@ -48,7 +48,7 @@ DigitalShop = () => {
         price: { usd: "$500.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/lazygen",
         image: book5,
- rating: 3.5,
+        rating: 3.5,
         category: "AI & Machine Learning",
       },
       {
@@ -58,7 +58,7 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/aisym?layout=profile",
         image: book4,
         category: "AI & Machine Learning",
- rating: 5,
+        rating: 5,
       },
       {
         title: "TABLOIDS",
@@ -67,7 +67,7 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/tab",
         image: book6, 
         category: "Billionaire & Strategy",
- rating: 4.5,
+        rating: 4.5,
       },
     ];
     setProducts(allProducts);

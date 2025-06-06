@@ -21,7 +21,7 @@ const aiModelsData = [
     tagline: 'POKEMON (CogniMon Protocol): Assemble Your AI Dream Team. Instantly.',
     description: "Why settle for one AI when you can command an entire ecosystem? The CogniMon Protocol lets you access, combine, and deploy specialized 'CogniMons' – powerful AI agents, each a master of its domain. Think of it: Real Estate Pros: Instantly deploy a CogniMon for hyper-local market analysis, another for automated legal doc review, and a third for predicting zoning changes – all working in concert. ROI Maximizers: Build a custom AI 'task force' to uncover hidden market inefficiencies, automate complex financial modeling, or identify arbitrage opportunities 24/7. Empire-Building Billionaires: Orchestrate vast, complex projects by deploying teams of specialized CogniMons for everything from R&D to global logistics and strategic threat assessment. Gen Z Creators: Mix-and-match CogniMons to generate unique content, build personalized apps, or even launch AI-powered startups with minimal overhead. Stop trying to find the one-size-fits-all AI. With POKEMON, you collect, train, and unleash a universe of specialized intelligences. Your unfair advantage is waiting to be assembled.",
     image: ai1, // Replace with actual image URL
-    gumroadLink: 'YOUR_POKEMON_GUMROAD_LINK', // Replace with actual Gumroad link
+    gumroadLink: 'https://vxpturf.gumroad.com/l/pokemaster', // Replace with actual Gumroad link
     rating: 4.0,
   },
   {
