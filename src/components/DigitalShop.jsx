@@ -18,7 +18,7 @@ DigitalShop = () => {
       {
         title: "100 Prompts",
         author: "Versatile.co",
-        price: { usd: "$299.00" },
+        price: { usd: "$100.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/100promptsforprof?layout=profile",
         image: book1,
         category: "AI & Machine Learning",
@@ -27,7 +27,7 @@ DigitalShop = () => {
       {
         title: "The Influencer Playbook",
         author: "Versatile.co",
-        price: { usd: "$1,200" },
+        price: { usd: "$200" },
         gumroadLink: "https://vxpturf.gumroad.com/l/influncerplaybook",
         image: book2,
         category: "Billionaire & Strategy",
@@ -36,7 +36,7 @@ DigitalShop = () => {
       {
         title: "AI for Business (Beginner's Guide)",
         author: "Versatile.co",
-        price: { usd: "$299.00" },
+        price: { usd: "$200.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/aiforbusiness",
         image: book3,
         rating: 4,
@@ -45,7 +45,7 @@ DigitalShop = () => {
       {
         title: "Lazy Genuis",
         author: "Versatile.co",
-        price: { usd: "$500.00" },
+        price: { usd: "$1000.00" },
         gumroadLink: "https://vxpturf.gumroad.com/l/lazygen",
         image: book5,
         rating: 3.5,
@@ -63,7 +63,7 @@ DigitalShop = () => {
       {
         title: "TABLOIDS",
         author: "Versatile.co",
-        price: { usd: "$1,999" },
+        price: { usd: "$100" },
         gumroadLink: "https://vxpturf.gumroad.com/l/tab",
         image: book6, 
         category: "Billionaire & Strategy",
