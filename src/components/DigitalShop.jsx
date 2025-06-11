@@ -5,6 +5,8 @@ import book3 from "../assets/images/books/book3.jpg"
 import book4 from "../assets/images/books/book4.png"
 import book5 from "../assets/images/books/book5.jpg"
 import book6 from "../assets/images/books/book6.png"
+import book7 from "../assets/images/books/book7.jpg"
+import book8 from "../assets/images/books/book8.png"
 import productCategories from "../data/productCategories"
 
 const 
@@ -67,6 +69,24 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/tab",
         image: book6, 
         category: "Billionaire & Strategy",
+        rating: 4.5,
+      },
+      {
+        title: "AI Agent Fundamentals",
+        author: "Versatile.co",
+        price: { usd: "$0" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/agent",
+        image: book7, 
+        category: "AI & Machine Learning",
+        rating: 4.5,
+      },
+      {
+        title: "How to use AI Agents",
+        author: "Versatile.co",
+        price: { usd: "$999" },
+        gumroadLink: "https://vxpturf.gumroad.com/l/agenticbusiness",
+        image: book8, 
+        category: "AI & Machine Learning",
         rating: 4.5,
       },
     ];
