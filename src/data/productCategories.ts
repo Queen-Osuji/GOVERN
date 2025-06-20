@@ -2,7 +2,7 @@ const productCategories = [
   "All",
   "Creative Prompts",
   "Billionaire & Strategy",
-  "Women and Babies",
+  "Women & Babies",
   "AI & Machine Learning",
 ];
 
