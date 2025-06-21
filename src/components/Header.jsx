@@ -43,6 +43,7 @@ const Header = ({ isPlaying, togglePlay }) => {
             <a href="/digital-shop" className="hover:text-purple-400 transition-colors">Digital Shop</a>
  <a href="/ai-models" className="hover:text-purple-400 transition-colors">AI Models</a>
             <a href="/faq" className="hover:text-purple-400 transition-colors">FAQ</a>
+            <a href="/ebook-bundle" className="hover:text-purple-400 transition-colors">Ebook Bundle</a>
           </nav>
           
           <div className="md:hidden flex items-center space-x-3">
