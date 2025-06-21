@@ -40,7 +40,7 @@ const EbookLanding = () => {
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY, // Vite environment variable
       email: email,
       amount: 85, // ₦85 in kobo
-      currency: 'USD', // Nigerian Naira
+      currency: 'NGN', // Nigerian Naira
       callback: (response) => {
         sendEbook(email, response.reference); // Call async ebook delivery
       },
