@@ -62,7 +62,7 @@ const Header = ({ isPlaying, togglePlay }) => {
       </div>
 
       <div className={mobileMenuClasses}>
-        <div className="p-6 min-h-screen">
+        <div className="p-6 min-h-screen bg-black">
           <div className="flex items-center justify-between mb-6 pb-2 border-b border-zinc-800">
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-yellow-400">VXP</span>
             <button onClick={toggleMenu} className="text-white focus:outline-none">
@@ -76,7 +76,8 @@ const Header = ({ isPlaying, togglePlay }) => {
             <a href="/about" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">About</a>
             <a href="/digital-shop" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Digital Shop</a>
  <a href="/ai-models" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">AI Models</a>
-            <a href="#contact" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Contact</a>
+ <a href="/ebook-bundle" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Ebook Bundle</a>
+            {/* <a href="#contact" onClick={toggleMenu} className="text-gray-200 hover:text-blue-500">Contact</a> */}
           </nav>
 
           {/* Simplified Audio Control - Inside Mobile Menu (Optional, or remove if only needed next to hamburger) */}
