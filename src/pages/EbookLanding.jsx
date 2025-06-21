@@ -5,9 +5,10 @@ import Countdown from 'react-countdown';
 import { FaGift } from "react-icons/fa";
 import React from "react";
 import { Input } from "../components/ui/input";
-import book1 from "../assets/images/books/book1.jpg";
-import book2 from "../assets/images/books/book2.png";
-import book3 from "../assets/images/books/book3.jpg";
+import book4 from "../assets/images/books/book4.png";
+import book8 from "../assets/images/books/book8.png";
+import book11 from "../assets/images/books/book11.jpg";
+import book5 from "../assets/images/books/book5.jpg";
 
 const EbookLanding = () => {
   const [email, setEmail] = useState("");
@@ -97,22 +98,28 @@ const EbookLanding = () => {
         Get powerful knowledge from VXP in one digital bundle. Learn about AI, business strategy, and media manipulation all in one place.
       </p>
 
-      <div className="relative flex items-center justify-center mb-10 mt-20">
+      <div className="relative flex gap-5 items-center justify-center mb-10 mt-20">
+        <img
+          src={book5} // Assuming book5 is correctly imported
+          alt="lazy Genius"
+          className="w-28 md:w-56 rounded-xl shadow-xl drop-shadow-md= transform rotate-2"
+          />
           <img
-          src={book1}
+          src={book8} // Assuming book8 is correctly imported
+          alt="AGENTIC AI OS"
+          className="w-32 md:w-60 rounded-xl shadow-xl drop-shadow-md transform -rotate-3"
+          />
+          <img
+          src={book4} // Assuming book4 is correctly imported
           alt="AI Symbiosis"
-          className="w-32 md:w-60 rounded-xl shadow-lg transform rotate-2"
+          className="w-32 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
           />
           <img
-          src={book2}
-          alt="Tabloid Ebook"
-          className="w-28 md:w-56 rounded-xl shadow-lg absolute left-1/2 transform -translate-x-5 bottom-5 md:-bottom-6 rotate-10"
+          src={book11} // Assuming book11 is correctly imported
+          alt="Corporate Ninjutsu Ebook"
+          className="w-28 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-2"
           />
-          <img
-          src={book3}
-          alt="Tabloid Ebook"
-          className="w-28 md:w-56 rounded-xl shadow-lg absolute right-1/2 transform -translate-x-5 bottom-5 md:-bottom-6 -rotate-10"
-          />
+          
       </div>
 
       <div className="text-center mb-8">
