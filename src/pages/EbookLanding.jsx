@@ -39,7 +39,7 @@ const EbookLanding = () => {
     const handler = PaystackPop.setup({
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY, // Vite environment variable
       email: email,
-      amount: 127500, // ₦127,500
+      amount: 12750000, // ₦127,500
       currency: 'NGN', // Nigerian Naira
       callback: (response) => {
         sendEbook(email, response.reference); // Call async ebook delivery
