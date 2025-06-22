@@ -1,12 +1,24 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 const app = express();
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 console.log('Starting server on PORT:', PORT);
 
+// Enable CORS for the frontend origin
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow React dev server
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow necessary methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow relevant headers
+}));
+
 app.use(express.json());
+app.use((req, res, next) => {
+  console.log('Received body:', req.body);
+  next();
+});
 
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'smtp.gmail.com',

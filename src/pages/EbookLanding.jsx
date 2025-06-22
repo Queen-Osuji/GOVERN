@@ -13,8 +13,6 @@ const EbookLanding = () => {
   const [email, setEmail] = useState("");
   const [showGift, setShowGift] = useState(false);
   const launchDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
-  const isLocal = window.location.hostname === 'localhost'; // For local testing
-  const port = isLocal ? ':5000' : ''; // Adjust port based on environment
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -36,9 +34,7 @@ const EbookLanding = () => {
   const sendEbook = async (email, reference) => {
     try {
       console.log(`Sending ebook to ${email} with reference ${reference}`);
-      const apiUrl = isLocal
-        ? `http://localhost${port}/api/email/send-ebook`
-        : `https://5173-firebase-governgit-1747930796647.cluster-3gc7bglotjgwuxlqpiut7yyqt4.cloudworkstations.dev${port}/api/email/send-ebook`;
+      const apiUrl = 'http://localhost:5000/api/email/send-ebook'; // Hardcoded for local
       console.log(`Fetching from: ${apiUrl}`);
       const res = await fetch(apiUrl, {
         method: 'POST',
@@ -182,6 +178,6 @@ const EbookLanding = () => {
       </p>
     </div>
   );
-}
+};
 
 export default EbookLanding;
