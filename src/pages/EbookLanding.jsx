@@ -13,11 +13,19 @@ const EbookLanding = () => {
   const [email, setEmail] = useState("");
   const [showGift, setShowGift] = useState(false);
   const launchDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
+  const isLocal = window.location.hostname === 'localhost'; // For local testing
+  const port = isLocal ? ':5000' : ''; // Adjust port based on environment
 
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://js.paystack.co/v1/inline.js';
     script.async = true;
+    script.onload = () => {
+      console.log('Paystack script loaded');
+    };
+    script.onerror = () => {
+      console.error('Failed to load Paystack script');
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -25,27 +33,62 @@ const EbookLanding = () => {
     };
   }, []);
 
+  const sendEbook = async (email, reference) => {
+    try {
+      console.log(`Sending ebook to ${email} with reference ${reference}`);
+      const apiUrl = isLocal
+        ? `http://localhost${port}/api/email/send-ebook`
+        : `https://5173-firebase-governgit-1747930796647.cluster-3gc7bglotjgwuxlqpiut7yyqt4.cloudworkstations.dev${port}/api/email/send-ebook`;
+      console.log(`Fetching from: ${apiUrl}`);
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, reference }),
+      }).catch(error => {
+        console.error('Fetch error:', error.message, 'URL:', apiUrl);
+        throw error;
+      });
+
+      console.log(`API response status: ${res.status}, URL: ${apiUrl}`);
+      if (res.ok) {
+        setShowGift(true);
+        console.log('Ebook sent successfully, showing gift');
+      } else {
+        const errorText = await res.text();
+        alert(`Payment successful, but there was an error sending the ebook (${res.status}): ${errorText}. Please contact support.`);
+        console.error(`API error: ${res.status} - ${errorText} at ${apiUrl}`);
+      }
+    } catch (error) {
+      console.error("Error sending ebook:", error.message);
+      alert("An error occurred after payment. Please contact support.");
+    }
+  };
+
   const handlePurchase = () => {
     if (!email) {
       alert("Please enter your email address.");
       return;
     }
-  
+
     if (typeof PaystackPop === 'undefined') {
       alert("Paystack is not available. Please try again later.");
       return;
     }
-  
+
+    console.log('Initiating Paystack payment with email:', email);
     const handler = PaystackPop.setup({
-      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY, // Vite environment variable
+      key: import.meta.env.VITE_TEST_PAYSTACK_PUBLIC_KEY,
       email: email,
-      amount: 12750000, // ₦127,500
-      currency: 'NGN', // Nigerian Naira
+      amount: 12750000,
+      currency: 'NGN',
       callback: (response) => {
-        sendEbook(email, response.reference); // Call async ebook delivery
+        console.log('Paystack callback triggered with response:', response);
+        sendEbook(email, response.reference);
       },
       onClose: () => {
-        alert("Payment cancelled. Please try again if you wish to purchase.");
+        console.log('Payment window closed');
       },
     });
     handler.openIframe();
