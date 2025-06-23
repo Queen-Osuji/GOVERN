@@ -13,7 +13,18 @@ import book2 from "../assets/images/books/book2.png";
 const EbookLanding = () => {
   const [email, setEmail] = useState("");
   const [showGift, setShowGift] = useState(false);
-  const launchDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
+
+  // Load launchDate from localStorage or set initial value (5 days from first load)
+  const [launchDate, setLaunchDate] = useState(() => {
+    const savedDate = localStorage.getItem('launchDate');
+    if (savedDate) {
+      return new Date(savedDate);
+    } else {
+      const newLaunchDate = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000);
+      localStorage.setItem('launchDate', newLaunchDate);
+      return newLaunchDate;
+    }
+  });
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -51,6 +62,7 @@ const EbookLanding = () => {
       console.log(`API response status: ${res.status}, URL: ${apiUrl}`);
       if (res.ok) {
         setShowGift(true);
+        setEmail(""); // Clear the email field on success
         console.log('Ebook sent successfully, showing gift');
       } else {
         const errorText = await res.text();
@@ -74,9 +86,9 @@ const EbookLanding = () => {
       return;
     }
 
-    // console.log('Initiating Paystack payment with email:', email);
+    console.log('Initiating Paystack payment with email:', email);
     const handler = PaystackPop.setup({
-      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+      key: import.meta.env.VITE_TEST_PAYSTACK_PUBLIC_KEY,
       email: email,
       amount: 12750000,
       currency: 'NGN',
@@ -108,9 +120,9 @@ const EbookLanding = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 flexn max-w-md md:max-w-xl">The $80K Blueprint : Unlock the Digital Stack That Works While You Sleep</h1>
+      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 flexn max-w-md md:max-w-xl">The $80K Blueprint : Unlock the Digital Stack That Works While You Sleep</h1>
       <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
-      5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley , starting now
+        5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley, starting now
       </p>
 
       <div className="text-center mb-2">
@@ -139,7 +151,7 @@ const EbookLanding = () => {
         />
         <img
           src={book2}
-          alt="Influncer guide"
+          alt="Influencer Guide"
           className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
         />
         <img
@@ -154,18 +166,17 @@ const EbookLanding = () => {
         <div className="flex flex-col text-left gap-2 mx-4 font-sans">
           <p>AI Symbiosis – A high-level blueprint that rivals $1,500 courses</p>
           <p>Lazy Genius – Passive revenue breakthroughs</p>
-          <p>Influencer Playbook– Grow even with zero followers</p>
-          <p>Agentic os in business – Monetize machine learning in your business without watching long video courses and living in tutorial hell.</p>
-          </div>
+          <p>Influencer Playbook – Grow even with zero followers</p>
+          <p>Agentic OS in Business – Monetize machine learning in your business without watching long video courses and living in tutorial hell</p>
+        </div>
         <div className="flex flex-col justify-center align-center mt-5 gap-2">
-          <h2 className='text-xl font-bold'>Bonus</h2>
+          <h2 className="text-xl font-bold">Bonus</h2>
           <p>VXP Escape Checklist:</p>
-          <p>Roadmap to your rebel launch & corporate ninjutsu </p>
+          <p>Roadmap to your rebel launch & Corporate Ninjutsu</p>
 
           <div className="flex justify-center align-center">
-            <p className='gap-2'>If you use these tactics, you will make <span className='text-red-500 font-semibold text-lg'>enemies.</span>Be ready
+            <p className="gap-2">If you use these tactics, you will make <span className="text-red-500 font-semibold text-lg">enemies.</span> Be ready
             </p>
-
           </div>
         </div>
       </div>
