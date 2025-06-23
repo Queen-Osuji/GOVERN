@@ -8,6 +8,7 @@ import book4 from "../assets/images/books/book4.png";
 import book8 from "../assets/images/books/book8.png";
 import book11 from "../assets/images/books/book11.jpg";
 import book5 from "../assets/images/books/book5.jpg";
+import book2 from "../assets/images/books/book2.png";
 
 const EbookLanding = () => {
   const [email, setEmail] = useState("");
@@ -107,40 +108,66 @@ const EbookLanding = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4">VXP EBook Bundle</h1>
-      <p className="text-center text-base md:text-xl mb-8 max-w-2xl px-4">
-        Get powerful knowledge from VXP in one digital bundle. Learn about AI, business strategy, and media manipulation all in one place.
+      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 flexn max-w-md md:max-w-xl">The $80,000 Escape Plan Built in a Toxic House With Nothing But Truth</h1>
+      <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
+      5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley , starting now
       </p>
 
-      <div className="relative flex gap-0 md:gap-5 items-center justify-center mb-10 mt-20">
-        <img
-          src={book5}
-          alt="Lazy Genius"
-          className="w-28 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2"
-        />
-        <img
-          src={book8}
-          alt="AGENTIC AI OS"
-          className="w-32 md:w-60 rounded-xl shadow-xl drop-shadow-md transform -rotate-3"
-        />
-        <img
-          src={book4}
-          alt="AI Symbiosis"
-          className="w-32 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
-        />
-        <img
-          src={book11}
-          alt="Corporate Ninjutsu Ebook"
-          className="w-28 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2"
-        />
-      </div>
-
-      <div className="text-center mb-8">
+      <div className="text-center mb-2">
         <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In:</h2>
         <Countdown
           date={launchDate}
           renderer={renderer}
         />
+      </div>
+
+      <div className="relative flex gap-0 md:gap-5 items-center justify-center mb-10 mt-10">
+        <img
+          src={book5}
+          alt="Lazy Genius"
+          className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2"
+        />
+        <img
+          src={book8}
+          alt="AGENTIC AI OS"
+          className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform -rotate-3"
+        />
+        <img
+          src={book4}
+          alt="AI Symbiosis"
+          className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
+        />
+        <img
+          src={book2}
+          alt="Influncer guide"
+          className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
+        />
+        <img
+          src={book11}
+          alt="Corporate Ninjutsu Ebook"
+          className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2"
+        />
+      </div>
+
+      <div className="flex flex-col max-w-md text-center mb-20">
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">🎁 what you are getting:</h2>
+        <div className="flex flex-col text-left gap-2 mx-4 font-sans">
+          <p>✅AI Symbiosis – A high-level blueprint that rivals $1,500 courses</p>
+          <p>✅Lazy Genius – Passive revenue breakthroughs</p>
+          <p>✅Influencer Playbook– Grow even with zero followers</p>
+          <p>✅Agentic os in business – Monetize machine learning in your business without watching long video courses and living in tutorial hell.</p>
+          </div>
+        <div className="flex flex-col justify-center align-center mt-5 gap-2">
+          <h2 className='text-xl font-bold'>Bonus</h2>
+          <p>VXP Escape Checklist:</p>
+          <p>Roadmap to your rebel launch & corporate ninjutsu </p>
+
+          <div className="flex justify-center align-center">
+            <p className='gap-2'>If you use these tactics, you will make <span className='text-red-500 font-semibold text-lg'>enemies.😡</span>Be ready
+            </p>
+
+          </div>
+        </div>
       </div>
 
       <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
