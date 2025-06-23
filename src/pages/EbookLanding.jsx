@@ -108,13 +108,13 @@ const EbookLanding = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 flexn max-w-md md:max-w-xl">The $80,000 Escape Plan Built in a Toxic House With Nothing But Truth</h1>
+      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 flexn max-w-md md:max-w-xl">The $80K Blueprint : Unlock the Digital Stack That Works While You Sleep</h1>
       <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
       5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley , starting now
       </p>
 
       <div className="text-center mb-2">
-        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In:</h2>
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In :</h2>
         <Countdown
           date={launchDate}
           renderer={renderer}
@@ -150,12 +150,12 @@ const EbookLanding = () => {
       </div>
 
       <div className="flex flex-col max-w-md text-center mb-20">
-        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">🎁 what you are getting:</h2>
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">What you are getting :</h2>
         <div className="flex flex-col text-left gap-2 mx-4 font-sans">
-          <p>✅AI Symbiosis – A high-level blueprint that rivals $1,500 courses</p>
-          <p>✅Lazy Genius – Passive revenue breakthroughs</p>
-          <p>✅Influencer Playbook– Grow even with zero followers</p>
-          <p>✅Agentic os in business – Monetize machine learning in your business without watching long video courses and living in tutorial hell.</p>
+          <p>AI Symbiosis – A high-level blueprint that rivals $1,500 courses</p>
+          <p>Lazy Genius – Passive revenue breakthroughs</p>
+          <p>Influencer Playbook– Grow even with zero followers</p>
+          <p>Agentic os in business – Monetize machine learning in your business without watching long video courses and living in tutorial hell.</p>
           </div>
         <div className="flex flex-col justify-center align-center mt-5 gap-2">
           <h2 className='text-xl font-bold'>Bonus</h2>
@@ -163,7 +163,7 @@ const EbookLanding = () => {
           <p>Roadmap to your rebel launch & corporate ninjutsu </p>
 
           <div className="flex justify-center align-center">
-            <p className='gap-2'>If you use these tactics, you will make <span className='text-red-500 font-semibold text-lg'>enemies.😡</span>Be ready
+            <p className='gap-2'>If you use these tactics, you will make <span className='text-red-500 font-semibold text-lg'>enemies.</span>Be ready
             </p>
 
           </div>
