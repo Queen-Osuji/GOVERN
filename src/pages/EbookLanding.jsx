@@ -74,9 +74,9 @@ const EbookLanding = () => {
       return;
     }
 
-    console.log('Initiating Paystack payment with email:', email);
+    // console.log('Initiating Paystack payment with email:', email);
     const handler = PaystackPop.setup({
-      key: import.meta.env.VITE_TEST_PAYSTACK_PUBLIC_KEY,
+      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
       email: email,
       amount: 12750000,
       currency: 'NGN',
