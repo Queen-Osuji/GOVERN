@@ -184,7 +184,7 @@ const EbookLanding = () => {
             className="w-full py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-md max-w-md"
             onClick={handlePurchase}
           >
-            Pay ₦127,500
+            Pay $85
           </Button>
         </CardContent>
       </Card>
