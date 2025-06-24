@@ -208,7 +208,7 @@ const EbookLanding = () => {
             Switch to {useUSD ? 'NGN (₦12,750,000)' : 'USD ($85)'}
           </button>
           <Button
-            className="w-full py-4 text-white rounded-md max-w-md"
+            className="w-full py-4 text-white bg-purple-600 rounded-md max-w-md"
             onClick={handlePurchase}
           >
             Pay {useUSD ? '$85' : '₦12,750,000'}
