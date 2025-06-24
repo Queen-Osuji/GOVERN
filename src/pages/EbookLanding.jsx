@@ -10,6 +10,8 @@ import book11 from "../assets/images/books/book11.jpg";
 import book5 from "../assets/images/books/book5.jpg";
 import book2 from "../assets/images/books/book2.png";
 
+// ... (other imports and component setup remain the same)
+
 const EbookLanding = () => {
   const [email, setEmail] = useState("");
   const [showGift, setShowGift] = useState(false);
@@ -20,11 +22,14 @@ const EbookLanding = () => {
     if (savedDate) {
       return new Date(savedDate);
     } else {
-      const newLaunchDate = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000);
+      const newLaunchDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
       localStorage.setItem('launchDate', newLaunchDate);
       return newLaunchDate;
     }
   });
+
+  // Add state to toggle currency
+  const [useUSD, setUseUSD] = useState(false); // Default to NGN, toggle to USD
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -86,12 +91,16 @@ const EbookLanding = () => {
       return;
     }
 
-    console.log('Initiating Paystack payment with email:', email);
+    // Determine currency and amount based on useUSD state
+    const currency = useUSD ? 'USD' : 'NGN';
+    const amount = useUSD ? 8500 : 12750000; // $85 in cents (8500) or ₦12,750,000 in kobo
+
+    console.log('Initiating Paystack payment with email:', email, 'Currency:', currency, 'Amount:', amount);
     const handler = PaystackPop.setup({
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
       email: email,
-      amount: 12750000,
-      currency: 'NGN',
+      amount: amount,
+      currency: currency,
       callback: (response) => {
         console.log('Paystack callback triggered with response:', response);
         sendEbook(email, response.reference);
@@ -189,13 +198,20 @@ const EbookLanding = () => {
             placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="my-2 p-4 w-full"
+            className="my-2 p-4 w-full bg-gray-100  rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
           />
+          {/* Toggle button to switch between NGN and USD */}
+          <button
+            className="w-full py-2 text-purple-600 rounded-md max-w-md mb-2"
+            onClick={() => setUseUSD(!useUSD)}
+          >
+            Switch to {useUSD ? 'NGN (₦12,750,000)' : 'USD ($85)'}
+          </button>
           <Button
-            className="w-full py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-md max-w-md"
+            className="w-full py-4 text-white rounded-md max-w-md"
             onClick={handlePurchase}
           >
-            Pay $85
+            Pay {useUSD ? '$85' : '₦12,750,000'}
           </Button>
         </CardContent>
       </Card>
