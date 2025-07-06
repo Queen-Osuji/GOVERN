@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
 import { peopleData } from '../data/peopleData'; // Import the people data
-import ceoImage from '../assets/images/ceo.jpg'
+import ceoImage from '../assets/images/about3.jpg'
 
 const About = () => {
   useEffect(() => {
@@ -67,23 +67,23 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-15 bg-black px-10 my-30">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-15 bg-black px-10 ">
+      <div className="container mx-auto px-6 my-30">
         <div className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">About <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">VXP & Verve</span></h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto"></div>
         </div>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl shadow-purple-500/20">
+            <div className="relative z-10 rounded-lg overflow-hidden drop-shadow-2xl shadow-purple-500/20">
               <img
                 src={ceoImage}
                 alt="Queen Osuji"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-gradient-to-tr from-purple-600 to-purple-800 rounded-full blur-3xl opacity-20 z-0"></div>
-            <div className="absolute -top-6 -left-6 w-64 h-64 bg-gradient-to-bl from-yellow-400 to-yellow-600 rounded-full blur-3xl opacity-10 z-0"></div>
+            <div className="absolute -bottom-6 -right-6 w-74 h-64 bg-gradient-to-tr from-purple-600 to-purple-800 rounded-full blur-3xl opacity-30 z-0"></div>
+            {/* <div className="absolute -top-6 -left-6 w-64 h-64 bg-gradient-to-bl from-yellow-400 to-yellow-600 rounded-full blur-3xl opacity-10 z-0"></div> */}
           </div>
           <div className="space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold">Queen Osuji</h3>
@@ -104,7 +104,7 @@ const About = () => {
                 <p className="text-sm text-gray-400">AI Solutions</p>
               </div>
               <div className="text-center">
-                <h5 className="text-3xl font-bold text-purple-400">50+</h5>
+                <h5 className="text-3xl font-bold text-purple-400">20+</h5>
                 <p className="text-sm text-gray-400">Digital Products</p>
               </div>
               <div className="text-center">
@@ -121,6 +121,8 @@ const About = () => {
           <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-800/30 rounded-xl p-8 relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl"></div>
             <div className="relative z-10">
+
+
               <h3 className="text-2xl font-bold mb-6 text-center">What Our Clients Say</h3>
               <div className="grid md:grid-cols-3 gap-8">
                 {peopleData.map((testimonial, index) => ( // Use the imported peopleData
