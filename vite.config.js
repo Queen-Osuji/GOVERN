@@ -7,4 +7,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
+  build: {
+    assertsInclude: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif'],
+  }
 })
