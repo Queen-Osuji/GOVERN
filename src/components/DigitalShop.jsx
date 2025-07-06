@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import book1 from "../assets/images/books/book1.jpg"
-import book2 from "../assets/images/books/book2.png"
-import book3 from "../assets/images/books/book3.jpg"
-import book4 from "../assets/images/books/book4.png"
-import book5 from "../assets/images/books/book5.jpg"
-import book6 from "../assets/images/books/book6.png"
-import book7 from "../assets/images/books/book7.jpg"
-import book8 from "../assets/images/books/book8.png"
-import book9 from "../assets/images/books/book9.png"
-import book10 from "../assets/images/books/book10.png"
+import book1 from "/images/books/book1.jpg"
+import book2 from "/images/books/book2.png"
+import book3 from "/images/books/book3.jpg"
+import book4 from "/images/books/book4.png"
+import book5 from "/images/books/book5.jpg"
+import book6 from "/images/books/book6.png"
+import book7 from "/images/books/book7.jpg"
+import book8 from "/images/books/book8.png"
+import book9 from "/images/books/book9.png"
+import book10 from "/images/books/book10.png"
 import productCategories from "../data/productCategories"
 
-const 
+const
 DigitalShop = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
- 
+
   useEffect(() => {
     const allProducts = [
       {
@@ -69,7 +69,7 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$1,999" },
         gumroadLink: "https://vxpturf.gumroad.com/l/tab",
-        image: book6, 
+        image: book6,
         category: "Billionaire & Strategy",
         rating: 4.5,
       },
@@ -78,7 +78,7 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$0" },
         gumroadLink: "https://vxpturf.gumroad.com/l/agent",
-        image: book7, 
+        image: book7,
         category: "AI & Machine Learning",
         rating: 4.5,
       },
@@ -87,7 +87,7 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$999" },
         gumroadLink: "https://vxpturf.gumroad.com/l/agenticbusiness",
-        image: book8, 
+        image: book8,
         category: "AI & Machine Learning",
         rating: 4.5,
       },
@@ -96,7 +96,7 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$50" },
         gumroadLink: "https://vxpturf.gumroad.com/l/qdwdb",
-        image: book9, 
+        image: book9,
         category: "Women & Babies",
         rating: 4.5,
       },
@@ -105,7 +105,7 @@ DigitalShop = () => {
         author: "Versatile.co",
         price: { usd: "$17" },
         gumroadLink: "https://vxpturf.gumroad.com/l/finishebook",
-        image: book10, 
+        image: book10,
         category: "Billionaire & Strategy",
         rating: 4.5,
       },
@@ -121,13 +121,13 @@ DigitalShop = () => {
   return (
     <section id="digital-shop" className="py-30 bg-black px-10 mt-10">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12"> {/* Adjusted margin */} 
+        <div className="text-center mb-12"> {/* Adjusted margin */}
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Digital <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-yellow-300">Shop</span></h2>
           <p className="text-gray-300 max-w-2xl mx-auto">Explore our collection of digital books to empower your journey.</p>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-yellow-400 mx-auto mt-4"></div>
         </div>
 
-        {/* Category Filters */} 
+        {/* Category Filters */}
         <div className="flex justify-center space-x-2 sm:space-x-4 mb-12 flex-wrap">
  {categories.map(category => (
  <button

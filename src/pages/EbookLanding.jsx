@@ -4,11 +4,11 @@ import { Button } from '../components/ui/button';
 import Countdown from 'react-countdown';
 import { FaGift } from "react-icons/fa";
 import { Input } from "../components/ui/input";
-import book4 from "../assets/images/books/book4.png";
-import book8 from "../assets/images/books/book8.png";
-import book11 from "../assets/images/books/book11.jpg";
-import book5 from "../assets/images/books/book5.jpg";
-import book2 from "../assets/images/books/book2.png";
+import book4 from "/images/books/book4.png";
+import book8 from "/images/books/book8.png";
+import book11 from "/images/books/book11.jpg";
+import book5 from "/images/books/book5.jpg";
+import book2 from "/images/books/book2.png";
 
 // ... (other imports and component setup remain the same)
 

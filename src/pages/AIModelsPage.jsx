@@ -2,10 +2,10 @@
 import React, { useState, useCallback } from 'react';
 import ComingSoonModal from '../components/ComingSoonModal';
 import AIModelModal from '../components/AIModelModal'; // Import the modal component
-import ai1 from '../assets/images/models/ai1.jpg'
-import ai2 from '../assets/images/models/ai2.jpg'
-import ai3 from '../assets/images/models/ai3.jpg'
-import ai4 from '../assets/images/models/ai4.jpg'
+import ai1 from '/images/models/ai1.jpg'
+import ai2 from '/images/models/ai2.jpg'
+import ai3 from '/images/models/ai3.jpg'
+import ai4 from '/images/models/ai4.jpg'
 
 const aiModelsData = [
   {
@@ -37,7 +37,7 @@ const aiModelsData = [
     tagline: 'BLACK SWAN: Master Uncertainty. Capitalize on Chaos.',
     description: "The future is full of surprises – some disastrous, some revolutionary. BLACK SWAN is your advanced early warning system and opportunity detector for those high-impact, low-probability events that change everything. Imagine being able to: Real Estate Developers: Identify brewing economic storms or unexpected demographic shifts that could tank your project – or pinpoint that overlooked area about to explode in value. ROI Guardians: Protect your portfolio from unforeseen market crashes AND be perfectly positioned to capitalize on sudden, paradigm-shifting opportunities that others miss. Forward-Thinking Billionaires: Navigate global volatility with confidence. BLACK SWAN helps you identify systemic risks and nascent breakthroughs, turning potential crises into strategic triumphs. Gen Z Futurists: Not just react to change, but anticipate it. Understand the forces shaping tomorrow and be ready to ride the next big wave, or even create it. BLACK SWAN doesn't just predict; it prepares you to thrive in a world of radical uncertainty. Turn unknown unknowns into your greatest strategic asset.",
     image: ai4, // Rep
-    gumroadLink: 'YOUR_BLACK_SWAN_GUMROAD_LINK', 
+    gumroadLink: 'YOUR_BLACK_SWAN_GUMROAD_LINK',
     rating: 0.0,
   },
   // Add more models here following the same structure

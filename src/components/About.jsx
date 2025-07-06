@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as echarts from 'echarts';
 import { peopleData } from '../data/peopleData'; // Import the people data
-import ceoImage from '../assets/images/about3.jpg'
+import ceoImage from '/images/about3.jpg'
 
 const About = () => {
   useEffect(() => {
