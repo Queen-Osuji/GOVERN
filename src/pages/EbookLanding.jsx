@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import Countdown from 'react-countdown';
@@ -9,70 +9,137 @@ import book8 from "/images/books/book8.png";
 import book11 from "/images/books/book11.jpg";
 import book5 from "/images/books/book5.jpg";
 import book2 from "/images/books/book2.png";
-
-// ... (other imports and component setup remain the same)
+import { loadScript } from "@paypal/paypal-js";
 
 const EbookLanding = () => {
   const [email, setEmail] = useState("");
   const [showGift, setShowGift] = useState(false);
+  const [paypalError, setPaypalError] = useState(null);
+  const paypalButtonRef = useRef(null);
 
-  // Load launchDate from localStorage or set initial value (5 days from first load)
+  // Load launchDate from localStorage with fallback
   const [launchDate, setLaunchDate] = useState(() => {
-    const savedDate = localStorage.getItem('launchDate');
-    if (savedDate) {
-      return new Date(savedDate);
-    } else {
-      const newLaunchDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
-      localStorage.setItem('launchDate', newLaunchDate);
-      return newLaunchDate;
+    try {
+      const savedDate = localStorage.getItem('launchDate');
+      if (savedDate) {
+        return new Date(savedDate);
+      }
+    } catch (error) {
+      console.warn('localStorage access failed:', error.message);
     }
+    const newLaunchDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
+    try {
+      localStorage.setItem('launchDate', newLaunchDate.toISOString());
+    } catch (error) {
+      console.warn('Failed to save launchDate to localStorage:', error.message);
+    }
+    return newLaunchDate;
   });
 
-  // Add state to toggle currency
-  const [useUSD, setUseUSD] = useState(false); // Default to NGN, toggle to USD
-
+  // Load PayPal SDK
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://js.paystack.co/v1/inline.js';
-    script.async = true;
-    script.onload = () => {
-      console.log('Paystack script loaded');
-    };
-    script.onerror = () => {
-      console.error('Failed to load Paystack script');
-    };
-    document.body.appendChild(script);
+    if (!document.querySelector(`script[src*="paypal.com/sdk/js"]`)) {
+      const paypalScript = document.createElement('script');
+      paypalScript.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(import.meta.env.VITE_PAYPAL_CLIENT_ID)}&currency=USD&disable-funding=card`;
+      paypalScript.async = true;
+      paypalScript.onload = () => {
+        console.log('PayPal SDK loaded');
+        if (window.paypal) {
+          initPayPalButton();
+        }
+      };
+      paypalScript.onerror = () => {
+        console.error('Failed to load PayPal SDK');
+        setPaypalError('Failed to load PayPal. Please check your browser settings, disable ad blockers, and try again.');
+      };
+      document.body.appendChild(paypalScript);
+    }
 
+    // Initialize PayPal button if SDK is already loaded
+    if (window.paypal && !paypalButtonRef.current) {
+      initPayPalButton();
+    }
+
+    // Cleanup PayPal button only
     return () => {
-      document.body.removeChild(script);
+      if (paypalButtonRef.current) {
+        paypalButtonRef.current.close().catch(() => {});
+        paypalButtonRef.current = null;
+      }
     };
   }, []);
 
-  const sendEbook = async (email, reference) => {
+  // Initialize PayPal Button
+  const initPayPalButton = () => {
+    if (!window.paypal || paypalButtonRef.current) {
+      console.warn('PayPal SDK not loaded or button already initialized');
+      return;
+    }
+
     try {
-      console.log(`Sending ebook to ${email} with reference ${reference}`);
-      const apiUrl = 'http://localhost:5000/api/email/send-ebook'; // Hardcoded for local
-      console.log(`Fetching from: ${apiUrl}`);
+      paypalButtonRef.current = window.paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'gold',
+          shape: 'rect',
+        },
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '85.00',
+                currency_code: 'USD',
+              },
+            }],
+          });
+        },
+        onApprove: async (data, actions) => {
+          console.log('PayPal payment approved:', data);
+          try {
+            const order = await actions.order.capture();
+            console.log('PayPal order captured:', order);
+            sendEbook(email, order.id);
+          } catch (err) {
+            console.error('PayPal capture error:', err);
+            setPaypalError('Failed to capture PayPal payment. Please try again.');
+          }
+        },
+        onError: (err) => {
+          console.error('PayPal button error:', err);
+          setPaypalError('An error occurred with PayPal. Please check your browser settings, disable ad blockers, and try again.');
+        },
+      });
+
+      paypalButtonRef.current.render('#paypal-button-container').catch(err => {
+        console.error('Failed to render PayPal button:', err);
+        setPaypalError('Failed to render PayPal button. Please check your browser settings, disable ad blockers, and try again.');
+      });
+    } catch (err) {
+      console.error('Error initializing PayPal button:', err);
+      setPaypalError('Error initializing PayPal. Please check your browser settings, disable ad blockers, and try again.');
+    }
+  };
+
+  // Send ebook after payment
+  const sendEbook = async (email, orderId) => {
+    try {
+      console.log(`Sending ebook to ${email} with order ID ${orderId}`);
+      const apiUrl = 'http://localhost:5000/api/email/send-ebook';
       const res = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, reference }),
-      }).catch(error => {
-        console.error('Fetch error:', error.message, 'URL:', apiUrl);
-        throw error;
+        body: JSON.stringify({ email, orderId }),
       });
 
-      console.log(`API response status: ${res.status}, URL: ${apiUrl}`);
       if (res.ok) {
         setShowGift(true);
-        setEmail(""); // Clear the email field on success
-        console.log('Ebook sent successfully, showing gift');
+        setEmail("");
+        console.log('Ebook sent successfully');
       } else {
         const errorText = await res.text();
         alert(`Payment successful, but there was an error sending the ebook (${res.status}): ${errorText}. Please contact support.`);
-        console.error(`API error: ${res.status} - ${errorText} at ${apiUrl}`);
       }
     } catch (error) {
       console.error("Error sending ebook:", error.message);
@@ -80,36 +147,19 @@ const EbookLanding = () => {
     }
   };
 
+  // Handle purchase
   const handlePurchase = () => {
     if (!email) {
       alert("Please enter your email address.");
       return;
     }
 
-    if (typeof PaystackPop === 'undefined') {
-      alert("Paystack is not available. Please try again later.");
+    if (!window.paypal) {
+      setPaypalError("PayPal is not available. Please check your browser settings, disable ad blockers, and try again.");
       return;
     }
 
-    // Determine currency and amount based on useUSD state
-    const currency = useUSD ? 'USD' : 'NGN';
-    const amount = useUSD ? 8500 : 12750000; // $85 in cents (8500) or ₦12,750,000 in kobo
-
-    console.log('Initiating Paystack payment with email:', email, 'Currency:', currency, 'Amount:', amount);
-    const handler = PaystackPop.setup({
-      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
-      email: email,
-      amount: amount,
-      currency: currency,
-      callback: (response) => {
-        console.log('Paystack callback triggered with response:', response);
-        sendEbook(email, response.reference);
-      },
-      onClose: () => {
-        console.log('Payment window closed');
-      },
-    });
-    handler.openIframe();
+    document.getElementById('paypal-button-container')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -129,49 +179,28 @@ const EbookLanding = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 flexn max-w-md md:max-w-xl">The $80K Blueprint : Unlock the Digital Stack That Works While You Sleep</h1>
-      <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
+      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 max-w-md md:max-w-xl">
+        The $80K Blueprint: Unlock the Digital Stack That Works While You Sleep
+      </h1>
+      <p className="text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
         5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley, starting now
       </p>
 
       <div className="text-center mb-2">
-        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In :</h2>
-        <Countdown
-          date={launchDate}
-          renderer={renderer}
-        />
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In:</h2>
+        <Countdown date={launchDate} renderer={renderer} />
       </div>
 
       <div className="relative flex gap-0 md:gap-5 items-center justify-center mb-10 mt-10">
-        <img
-          src={book5}
-          alt="Lazy Genius"
-          className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2"
-        />
-        <img
-          src={book8}
-          alt="AGENTIC AI OS"
-          className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform -rotate-3"
-        />
-        <img
-          src={book4}
-          alt="AI Symbiosis"
-          className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
-        />
-        <img
-          src={book2}
-          alt="Influencer Guide"
-          className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1"
-        />
-        <img
-          src={book11}
-          alt="Corporate Ninjutsu Ebook"
-          className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2"
-        />
+        <img src={book5} alt="Lazy Genius" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2" />
+        <img src={book8} alt="AGENTIC AI OS" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform -rotate-3" />
+        <img src={book4} alt="AI Symbiosis" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1" />
+        <img src={book2} alt="Influencer Guide" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1" />
+        <img src={book11} alt="Corporate Ninjutsu Ebook" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2" />
       </div>
 
       <div className="flex flex-col max-w-md text-center mb-20">
-        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">What you are getting :</h2>
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">What you are getting:</h2>
         <div className="flex flex-col text-left gap-2 mx-4 font-sans">
           <p>AI Symbiosis – A high-level blueprint that rivals $1,500 courses</p>
           <p>Lazy Genius – Passive revenue breakthroughs</p>
@@ -182,9 +211,9 @@ const EbookLanding = () => {
           <h2 className="text-xl font-bold">Bonus</h2>
           <p>VXP Escape Checklist:</p>
           <p>Roadmap to your rebel launch & Corporate Ninjutsu</p>
-
           <div className="flex justify-center align-center">
-            <p className="gap-2">If you use these tactics, you will make <span className="text-red-500 font-semibold text-lg">enemies.</span> Be ready
+            <p className="gap-2">
+              If you use these tactics, you will make <span className="text-red-500 font-semibold text-lg">enemies.</span> Be ready
             </p>
           </div>
         </div>
@@ -198,21 +227,19 @@ const EbookLanding = () => {
             placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="my-2 p-4 w-full bg-gray-100  rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
+            className="my-2 p-4 w-full bg-gray-100 rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
           />
-          {/* Toggle button to switch between NGN and USD */}
-          <button
-            className="w-full py-2 text-purple-600 rounded-md max-w-md mb-2"
-            onClick={() => setUseUSD(!useUSD)}
-          >
-            Switch to {useUSD ? 'NGN (₦12,750,000)' : 'USD ($85)'}
-          </button>
-          <Button
+          {/* <Button
             className="w-full py-4 text-white bg-purple-600 rounded-md max-w-md"
             onClick={handlePurchase}
+            disabled={paypalError}
           >
-            Pay {useUSD ? '$85' : '₦12,750,000'}
-          </Button>
+            Pay $85 (PayPal)
+          </Button> */}
+          <div id="paypal-button-container" className="mt-4"></div>
+          {paypalError && (
+            <p className="text-red-500 text-sm mt-2">{paypalError}</p>
+          )}
         </CardContent>
       </Card>
 
@@ -234,4 +261,4 @@ const EbookLanding = () => {
   );
 };
 
-export default EbookLanding;"'"
+export default EbookLanding;
