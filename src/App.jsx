@@ -8,6 +8,7 @@ import AIModelsPage from './pages/AIModelsPage'; // Import the AIModelsPage comp
 import Header from './components/Header';
 import Home from './pages/Home';
 import EbookLanding from './pages/EbookLanding'
+import TermsAndConditions from './components/TermsAndCondidition'; // Import the Terms and Conditions page
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -29,17 +30,18 @@ function App() {
   }, [isPlaying]);
 
  return (
-  <div className="bg-[#080808] min-h-screen"> 
+  <div className="bg-[#080808] min-h-screen">
     <audio ref={audioRef} src="/audio/background_audio.mp3" loop />
     <Header isPlaying={isPlaying} togglePlay={togglePlay} />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} /> 
+      <Route path="/about" element={<About />} />
       <Route path="/digital-shop" element={<DigitalShop />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/faq" element={<FAQPage />} />
-      <Route path="/ai-models" element={<AIModelsPage />} /> 
+      <Route path="/ai-models" element={<AIModelsPage />} />
       <Route path="/ebook-bundle" element={<EbookLanding />} />
+      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
     </Routes>
   </div>
  );

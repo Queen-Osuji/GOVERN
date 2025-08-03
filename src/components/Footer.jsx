@@ -60,11 +60,12 @@ const Footer = () => {
             © {new Date().getFullYear()} VXP & Verve. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <p className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Privacy Policy</p>
-            <p className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Terms of Service</p>
-            <p className="text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Cookie Policy</p>
+            <a href="/terms-and-conditions" className="underline text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Terms and Conditions</a> |
+            <a href="/privacy-policy" className="underline ml-2  text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Privacy Policy</a>
+            {/* <p className="underline ml-2 text-gray-400 hover:text-purple-400 text-sm cursor-pointer">Cookie Policy</p> */}
           </div>
         </div>
+            <p className="text-xs text-center mt-8 text-purple-400">Powered by VXP – Creating the Future with Intelligence™</p>
       </div>
       <button
         className="fixed bottom-6 right-6 w-12 h-12 bg-purple-700 rounded-full flex items-center justify-center shadow-lg hover:bg-purple-600 transition-all z-20 cursor-pointer"

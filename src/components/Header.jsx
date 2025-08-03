@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react'; // Import icons
 
 const Header = ({ isPlaying, togglePlay }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [scrollPosition, setScrollPosition] = useState(0);
 
  useEffect(() => {
@@ -14,7 +14,7 @@ const Header = ({ isPlaying, togglePlay }) => {
   };
 
   const mobileMenuClasses = `fixed inset-y-0 right-0 z-50 w-64 bg-black shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`;
-  
+
   const headerClasses = `fixed top-0 z-50 w-full transition-all duration-300 ${scrollPosition > 50 ? 'bg-black/80 backdrop-blur-md shadow-lg' : 'bg-transparent'} border-b border-purple-900/30`;
   const simpleButtonClass = `text-white hover:text-purple-400 transition-colors rounded-full p-2 flex justify-center items-center focus:outline-none ${isPlaying ? 'bg-purple-700' : 'bg-gray-700'}`;
  return (
@@ -28,11 +28,11 @@ const Header = ({ isPlaying, togglePlay }) => {
               </h1>
             </a>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-3 mr-4">
             <button onClick={togglePlay} className={simpleButtonClass}>
 
-              
+
               {isPlaying && <Pause size={22} />}
               {!isPlaying && <Play size={22} />}
             </button>
@@ -43,12 +43,13 @@ const Header = ({ isPlaying, togglePlay }) => {
             <a href="/digital-shop" className="hover:text-purple-400 transition-colors">Digital Shop</a>
  <a href="/ai-models" className="hover:text-purple-400 transition-colors">AI Models</a>
             <a href="/faq" className="hover:text-purple-400 transition-colors">FAQ</a>
+            <a href="/courses" className="hover:text-purple-400 transition-colors">Our Courses</a>
             <a href="/ebook-bundle" className="hover:text-purple-400 transition-colors">Ebook Bundle</a>
           </nav>
-          
+
           <div className="md:hidden flex items-center space-x-3">
             {/* Simplified Audio Control - Mobile */}
-            <button onClick={togglePlay} className={simpleButtonClass}>              
+            <button onClick={togglePlay} className={simpleButtonClass}>
             {isPlaying && <Pause size={22} />}
             {!isPlaying && <Play size={22} />}
             </button>

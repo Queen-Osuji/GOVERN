@@ -93,18 +93,18 @@ app.post('/api/email/send-ebook', async (req, res) => {
       subject: "You're In. Your Escape Starts Now. 🎁",
       html: `
         <h2>Hi ${customerName},</h2>
-        <p>Congratulations. You just did what most people don’t:  
+        <p>Congratulations. You just did what most people don’t:
         You bet on your future with something smarter than luck — a weapon.</p>
-        <p>Inside this bundle is more than just content.  
+        <p>Inside this bundle is more than just content.
         It’s leverage. Speed. Systems. And a shot at income that doesn’t ask for permission.</p>
         <p>👇 Here's your VXP Escape Bundle + Checklist:</p>
-        <a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Download Button</a>  
+        <a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Download Button</a>
         <p><a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link">Backup Link</a></p>
         <p>You have 2 days before this link expires — just like the discounted rate. So make this moment count.</p>
         <p><strong>Affiliate Perk Reminder</strong><br>
-        You now earn $30 for every person you refer.  
+        You now earn $30 for every person you refer.
         <a href="https://yoursite.com/affiliate-link-generator">Grab your link here</a></p>
-        <p>If you run into anything or need help escaping the matrix, just reply to this email.  
+        <p>If you run into anything or need help escaping the matrix, just reply to this email.
         We’re right behind you.</p>
         <p>Stay bold,<br>
         VXP Launch Team<br>
