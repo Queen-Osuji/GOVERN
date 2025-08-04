@@ -1,10 +1,6 @@
 import React from 'react';
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-}
-
-export function Card({ className, ...props }: CardProps) {
+export function Card({ className, ...props }) {
   return (
     <div
       className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`}
@@ -13,11 +9,7 @@ export function Card({ className, ...props }: CardProps) {
   );
 }
 
-interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-}
-
-export function CardContent({ className, ...props }: CardContentProps) {
+export function CardContent({ className, ...props }) {
   return (
     <div
       className={`p-6 pt-0 ${className}`}
@@ -26,12 +18,7 @@ export function CardContent({ className, ...props }: CardContentProps) {
   );
 }
 
-interface SimpleCardProps {
-  title: string;
-  content: string;
-}
-
-const SimpleCard: React.FC<SimpleCardProps> = ({ title, content }) => {
+const SimpleCard = ({ title, content }) => {
   return (
     <Card className="w-[300px]">
       <CardContent className="flex flex-col justify-center items-center p-6">

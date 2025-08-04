@@ -1,19 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, CardContent } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { Button } from '../components/ui/Button';
 import Countdown from 'react-countdown';
-import { FaGift } from "react-icons/fa";
-import { Input } from "../components/ui/input";
+import { Input } from "../components/ui/Input";
 import book4 from "../assets/books/book4.png";
 import book8 from "../assets/books/book8.png";
 import book11 from "../assets/books/book11.jpg";
 import book5 from "../assets/books/book5.jpg";
 import book2 from "../assets/books/book2.png";
+import PaymentModal from '../components/PaymentModal';
 
 const EbookLanding = () => {
   const [email, setEmail] = useState("");
-  const [showGift, setShowGift] = useState(false);
-  const [useUSD, setUseUSD] = useState(false); // Toggle between NGN and USD for Paystack
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const accountDetails = {
+    name: 'VXP Digital Solutions',
+    number: '1234567890'
+  };
 
   // Load launchDate from localStorage or set initial value (5 days from first load)
   const [launchDate, setLaunchDate] = useState(() => {
@@ -26,37 +29,6 @@ const EbookLanding = () => {
       return newLaunchDate;
     }
   });
-
-  useEffect(() => {
-    // Load Paystack script
-    const paystackScript = document.createElement('script');
-    paystackScript.src = 'https://js.paystack.co/v1/inline.js';
-    paystackScript.async = true;
-    paystackScript.onload = () => {
-      console.log('Paystack script loaded');
-    };
-    paystackScript.onerror = () => {
-      console.error('Failed to load Paystack script');
-    };
-    document.body.appendChild(paystackScript);
-
-    // Load Flutterwave script
-    const flutterwaveScript = document.createElement('script');
-    flutterwaveScript.src = 'https://checkout.flutterwave.com/v3.js';
-    flutterwaveScript.async = true;
-    flutterwaveScript.onload = () => {
-      console.log('Flutterwave script loaded');
-    };
-    flutterwaveScript.onerror = () => {
-      console.error('Failed to load Flutterwave script');
-    };
-    document.body.appendChild(flutterwaveScript);
-
-    return () => {
-      document.body.removeChild(paystackScript);
-      document.body.removeChild(flutterwaveScript);
-    };
-  }, []);
 
   const sendEbook = async (email, reference) => {
     try {
@@ -76,7 +48,6 @@ const EbookLanding = () => {
 
       console.log(`API response status: ${res.status}, URL: ${apiUrl}`);
       if (res.ok) {
-        setShowGift(true);
         setEmail(""); // Clear the email field on success
         console.log('Ebook sent successfully, showing gift');
       } else {
@@ -90,70 +61,24 @@ const EbookLanding = () => {
     }
   };
 
-  const handlePaystackPurchase = () => {
-    if (!email) {
-      alert("Please enter your email address.");
-      return;
-    }
-
-    if (typeof PaystackPop === 'undefined') {
-      alert("Paystack is not available. Please try again later.");
-      return;
-    }
-
-    const currency = useUSD ? 'USD' : 'NGN';
-    const amount = useUSD ? 8500 : 12750000; // $85 in cents (8500) or ₦12,750,000 in kobo
-
-    console.log('Initiating Paystack payment with email:', email, 'Currency:', currency, 'Amount:', amount);
-    const handler = PaystackPop.setup({
-      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
-      email: email,
-      amount: amount,
-      currency: currency,
-      callback: (response) => {
-        console.log('Paystack callback triggered with response:', response);
-        sendEbook(email, response.reference);
-      },
-      onClose: () => {
-        console.log('Payment window closed');
-      },
-    });
-    handler.openIframe();
-  };
-
-  const handleFlutterwavePurchase = () => {
-    if (!email) {
-      alert("Please enter your email address.");
-      return;
-    }
-
-    if (typeof FlutterwaveCheckout === 'undefined') {
-      alert("Flutterwave is not available. Please try again later.");
-      return;
-    }
-
-    FlutterwaveCheckout({
-      public_key: import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY,
-      tx_ref: `tx-${Date.now()}`, // Unique transaction reference
-      amount: 85, // $85
-      currency: 'USD',
-      payment_options: 'card, ussd, account, mobilemoneyghana, mobilemoneyuganda, mobilemoneyfranco',
-      customer: {
-        email: email,
-        name: 'Customer Name',
-      },
-      callback: (response) => {
-        console.log('Flutterwave callback triggered with response:', response);
-        if (response.status === 'successful') {
-          sendEbook(email, response.transaction_id);
+  const handleConfirmPayment = (email, transactionRef) => {
+    fetch('http://localhost:5000/api/submit-payment-reference', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, transactionRef })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert('Your payment reference has been submitted. You will receive the ebook once verified.');
         } else {
-          alert('Payment was not successful. Please try again.');
+          alert('Failed to submit payment reference. Please try again.');
         }
-      },
-      onClose: () => {
-        console.log('Flutterwave payment window closed');
-      },
-    });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      });
   };
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -245,39 +170,23 @@ const EbookLanding = () => {
             className="my-2 p-4 w-full bg-gray-100 rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
           />
           {/* Toggle button to switch between NGN and USD for Paystack */}
-          <button
-            className="w-full py-2 text-purple-600 rounded-md max-w-md mb-2"
-            onClick={() => setUseUSD(!useUSD)}
-          >
-            Switch to {useUSD ? 'NGN (₦12,750,000)' : 'USD ($85)'}
-          </button>
-          {/* Paystack button */}
+        <div className="p-4">
+          <h1 className="text-3xl font-bold mb-4">Get Your Ebook</h1>
           <Button
-            className="w-full py-4 text-white bg-purple-600 rounded-md max-w-md mb-2"
-            onClick={handlePaystackPurchase}
+            onClick={() => setIsModalOpen(true)}
+            className="bg-green-500 text-white p-2 rounded"
           >
-            Pay {useUSD ? '$85' : '₦12,750,000'} with Paystack
+            Pay with Bank Transfer
           </Button>
-          {/* Flutterwave button for USD */}
-          <Button
-            className="w-full py-4 text-white bg-purple-600 rounded-md max-w-md"
-            onClick={handleFlutterwavePurchase}
-          >
-            Pay $85 with Flutterwave
-          </Button>
+          <PaymentModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            accountDetails={accountDetails}
+            onConfirm={handleConfirmPayment}
+          />
+    </div>
         </CardContent>
       </Card>
-
-      {showGift && (
-        <div className="mt-10 text-center">
-          <div className="bg-purple-800 text-white p-8 rounded-2xl shadow-xl inline-block">
-            <FaGift size={48} className="mx-auto mb-4" />
-            <h3 className="text-xl font-bold">Thank You for Your Purchase!</h3>
-            <p className="mt-2 text-sm">The VXP eBooks have been delivered to <strong>{email}</strong>.</p>
-            <p className="text-sm mt-1">Enjoy your journey into powerful knowledge, from our team to your growth. 💜</p>
-          </div>
-        </div>
-      )}
 
       <p className="text-xs text-center mt-8 text-purple-400">
         Powered by VXP – Creating the Future with Intelligence™
