@@ -14,8 +14,8 @@ const EbookLanding = () => {
   const [email, setEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const accountDetails = {
-    name: 'VXP Digital Solutions',
-    number: '1234567890'
+    name: 'PRECIOUS CHIAMAKA OSUJI',
+    number: '218627357074'
   };
 
   // Load launchDate from localStorage or set initial value (5 days from first load)
