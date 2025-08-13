@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent } from '../components/ui/card';
-import { Button } from '../components/ui/Button';
+import { Card} from '../components/ui/card';
+import { CardContent } from '../components/ui/card';
+// import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import Countdown from 'react-countdown';
 import { FaGift } from 'react-icons/fa';
