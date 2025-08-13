@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card} from '../components/ui/card';
-import { CardContent } from '../components/ui/card';
+import { Card} from '../components/ui/Card';
+import { CardContent } from '../components/ui/Card';
 // import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import Countdown from 'react-countdown';
@@ -143,9 +143,9 @@ const EbookLanding = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="my-2 p-4 w-full bg-gray-100 rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
           />
+      <div id="paypal-button-container" className="mb-4"></div>
         </CardContent>
       </Card>
-      <div id="paypal-button-container" className="mb-4"></div>
       {showGift && (
         <div className="mt-10 text-center" role="alert" aria-live="polite">
           <div className="bg-purple-800 text-white p-8 rounded-2xl shadow-xl inline-block">
