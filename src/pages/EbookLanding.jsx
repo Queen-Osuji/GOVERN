@@ -9,6 +9,7 @@ import book8 from '../assets/books/book8.png';
 import book11 from '../assets/books/book11.jpg';
 import book5 from '../assets/books/book5.jpg';
 import book2 from '../assets/books/book2.png';
+import book12 from '../assets/books/book12.jpg'
 import { loadScript } from '@paypal/paypal-js';
 
 const EbookLanding = () => {
@@ -37,7 +38,7 @@ const EbookLanding = () => {
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: '85',
+                    value: '90',
                     currency_code: 'USD'
                   }
                 }]
@@ -131,6 +132,7 @@ const EbookLanding = () => {
         <img src={book4} alt="AI Symbiosis book cover" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1" aria-label="AI Symbiosis book" />
         <img src={book2} alt="Influencer Guide book cover" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1" aria-label="Influencer Guide book" />
         <img src={book11} alt="Corporate Ninjutsu Ebook book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2" aria-label="Corporate Ninjutsu book" />
+        <img src={book12} alt="Agentic AI Ebook book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2" aria-label="Corporate Ninjutsu book" />
       </div>
       <div className="flex flex-col max-w-md text-center mb-20">
         <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">What you are getting:</h2>
@@ -139,6 +141,7 @@ const EbookLanding = () => {
           <p>Lazy Genius – Passive revenue breakthroughs</p>
           <p>Influencer Playbook – Grow even with zero followers</p>
           <p>Agentic OS in Business – Monetize machine learning in your business without watching long video courses and living in tutorial hell</p>
+          <p>Agentic AI Playbook - Creating mirco-products that you can sell</p>
         </div>
         <div className="flex flex-col justify-center items-center mt-5 gap-2">
           <h2 className="text-xl font-bold">Bonus</h2>

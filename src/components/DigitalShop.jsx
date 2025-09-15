@@ -9,6 +9,7 @@ import book7 from "../assets/books/book7.jpg"
 import book8 from "../assets/books/book8.png"
 import book9 from "../assets/books/book9.png"
 import book10 from "../assets/books/book10.png"
+import book12 from "../assets/books/book12.jpg"
 import productCategories from "../data/productCategories"
 
 const
@@ -107,6 +108,15 @@ DigitalShop = () => {
         gumroadLink: "https://vxpturf.gumroad.com/l/finishebook",
         image: book10,
         category: "Billionaire & Strategy",
+        rating: 4.5,
+      },
+      {
+        title: "Agentic AI Playbook",
+        author: "Versatile.co",
+        price: { usd: "$999" },
+        gumroadLink: "../pages/EbookLanding.jsx",
+        image: book12,
+        category: "AI & Machine Learning",
         rating: 4.5,
       },
     ];

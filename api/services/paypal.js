@@ -3,8 +3,8 @@ const axios = require('axios');
 async function verifyPayPalPayment(orderId) {
   const clientId = process.env.PAYPAL_CLIENT_ID;
   const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
-  const isSandbox = process.env.PAYPAL_ENV === 'sandbox';
-  const baseUrl = isSandbox ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com';
+  const isSandbox = process.env.PAYPAL_ENV === 'live';
+  const baseUrl = isSandbox ? 'https://api-m.sandbox.pxaypal.com' : 'https://api-m.paypal.com'; // I am to put the main sandox url here
   const url = `${baseUrl}/v2/checkout/orders/${orderId}`;
 
   try {
