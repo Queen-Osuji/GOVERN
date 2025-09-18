@@ -117,7 +117,7 @@ const EbookLanding = () => {
   return (
     <div className="min-h-screen min-w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
       <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 max-w-md md:max-w-xl">
-        The $80K Blueprint: Unlock the Digital Stack That Works While You Sleep
+        The $100K Blueprint: Unlock the Digital Stack That Works While You Sleep
       </h1>
       <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
         5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley, starting now
