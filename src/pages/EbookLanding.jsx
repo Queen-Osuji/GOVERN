@@ -38,7 +38,7 @@ const EbookLanding = () => {
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: '90',
+                    value: '95',
                     currency_code: 'USD'
                   }
                 }]
