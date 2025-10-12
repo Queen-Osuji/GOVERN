@@ -50,7 +50,7 @@ const DigitalShop = () => {
     const containerId = `paypal-button-container-${selectedProduct.title.replace(/\s/g, '')}`;
 
     // Replace with your actual PayPal client ID
-    const clientId = 'YOUR_PAYPAL_CLIENT_ID'; // Use: import.meta.env.VITE_PAYPAL_CLIENT_ID in your project
+    const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID; // Use: import.meta.env.VITE_PAYPAL_CLIENT_ID in your project
 
     loadPayPalScript(clientId)
       .then((paypal) => {
