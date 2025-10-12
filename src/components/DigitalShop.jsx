@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 // Placeholder images - replace with your actual imports
-const book1 = "https://via.placeholder.com/200x300?text=Book+1";
-const book2 = "https://via.placeholder.com/200x300?text=Book+2";
-const book3 = "https://via.placeholder.com/200x300?text=Book+3";
-const book4 = "https://via.placeholder.com/200x300?text=Book+4";
-const book5 = "https://via.placeholder.com/200x300?text=Book+5";
-const book6 = "https://via.placeholder.com/200x300?text=Book+6";
-const book7 = "https://via.placeholder.com/200x300?text=Book+7";
-const book8 = "https://via.placeholder.com/200x300?text=Book+8";
-const book9 = "https://via.placeholder.com/200x300?text=Book+9";
-const book10 = "https://via.placeholder.com/200x300?text=Book+10";
-const book12 = "https://via.placeholder.com/200x300?text=Book+12";
+import book1 from "../assets/books/book1.jpg";
+import book2 from "../assets/books/book2.png";
+import book3 from "../assets/books/book3.jpg";
+import book4 from "../assets/books/book4.png";
+import book5 from "../assets/books/book5.jpg";
+import book6 from "../assets/books/book6.png";
+import book7 from "../assets/books/book7.jpg";
+import book8 from "../assets/books/book8.png";
+import book9 from "../assets/books/book9.png";
+import book10 from "../assets/books/book10.png";
+import book12 from "../assets/books/book12.jpg";
 
 const productCategories = ['All', 'AI & Machine Learning', 'Billionaire & Strategy', 'Women & Babies'];
 
