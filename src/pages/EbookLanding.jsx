@@ -18,7 +18,7 @@ const EbookLanding = () => {
   const [purchasedEmail, setPurchasedEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Loading state for payment/API
   const [error, setError] = useState(''); // Error state for user feedback
-  const launchDate = new Date('2025-08-15T00:00:00Z');
+  const launchDate = new Date('2025-10-06T00:00:00Z');
 
   useEffect(() => {
     let paypalButtons = null;
