@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card } from '../components/ui/Card';
 import { CardContent } from '../components/ui/Card';
@@ -18,7 +19,16 @@ const EbookLanding = () => {
   const [purchasedEmail, setPurchasedEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Loading state for payment/API
   const [error, setError] = useState(''); // Error state for user feedback
+  const [isLaunched, setIsLaunched] = useState(false);
+  const [bundlePrice, setBundlePrice] = useState('95');
   const launchDate = new Date('2025-10-16T00:00:00Z');
+
+  useEffect(() => {
+    const now = new Date();
+    const launched = now > launchDate;
+    setIsLaunched(launched);
+    setBundlePrice(launched ? '195' : '95');
+  }, []);
 
   useEffect(() => {
     let paypalButtons = null;
@@ -38,7 +48,7 @@ const EbookLanding = () => {
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: '95',
+                    value: bundlePrice,
                     currency_code: 'USD'
                   }
                 }]
@@ -75,7 +85,7 @@ const EbookLanding = () => {
         paypalButtons.close();
       }
     };
-  }, [email]); // Depend on email to re-render if needed
+  }, [email, bundlePrice]); // Depend on email and bundlePrice to re-render if needed
 
   const sendEbook = async (email, orderId) => {
     setIsLoading(true);
@@ -103,7 +113,13 @@ const EbookLanding = () => {
   };
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) return <span className="text-purple-400">The bundle has launched!</span>;
+    if (completed) {
+      return (
+        <div className="flex justify-center space-x-5 my-5 text-3xl font-mono py-4 px-6 rounded-md backdrop-filter backdrop-blur-md bg-gray-900 bg-opacity-50">
+          <span className="text-purple-400">The bundle has launched!</span>
+        </div>
+      );
+    }
     return (
       <div className="flex justify-center space-x-5 my-5 text-3xl font-mono py-4 px-6 rounded-md backdrop-filter backdrop-blur-md bg-gray-900 bg-opacity-50">
         <div>{days}: <span className="text-lg block">Days</span></div>
@@ -125,6 +141,9 @@ const EbookLanding = () => {
       <div className="text-center mb-2">
         <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In:</h2>
         <Countdown date={launchDate} renderer={renderer} />
+        {isLaunched && (
+          <p className="text-2xl font-bold text-green-400 mt-2">Now available for ${bundlePrice}!</p>
+        )}
       </div>
       <div className="relative flex gap-0 md:gap-5 items-center justify-center mb-10 mt-10">
         <img src={book5} alt="Lazy Genius book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2" aria-label="Lazy Genius book" />
@@ -154,7 +173,7 @@ const EbookLanding = () => {
       </div>
       <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
         <CardContent className="p-6 space-y-8">
-          <h2 className="text-xl font-semibold text-center">Purchase the Bundle</h2>
+          <h2 className="text-xl font-semibold text-center">Purchase the Bundle for ${bundlePrice}</h2>
           <Input
             type="email"
             placeholder="Enter your email address"
