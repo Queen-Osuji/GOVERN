@@ -346,9 +346,9 @@ const DigitalShop = () => {
                     setShowGift(false);
                     setError('');
                   }}
-                  className="w-full bg-gradient-to-r from-yellow-400 to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all cursor-pointer text-white"
+                  className="w-full bg-gradient-to-r to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all cursor-pointer text-white"
                 >
-                  {product.isFree ? 'Get Free Ebook' : 'Buy with PayPal'}
+                  {product.isFree ? 'Get Free Ebook' : '🔒 Let Me In '}
                 </button>
               </div>
             </div>
