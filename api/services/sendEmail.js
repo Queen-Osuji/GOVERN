@@ -2,7 +2,7 @@ import { transporter } from '../config/email.js';
 import { verifyPayPalPayment } from './paypal.js';
 
 export const sendEbook = async (req, res) => {
-  const { email, orderId } = req.body;
+  const { email, orderId, type, buyerName } = req.body;
 
   // Verify PayPal payment
   const verification = await verifyPayPalPayment(orderId);
@@ -11,27 +11,52 @@ export const sendEbook = async (req, res) => {
   }
 
   // Extract customer name
-  const customerName = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1) || 'Customer';
+  const customerName = buyerName || (email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1)) || 'Customer';
+
+  let subject = "You're In. Your Escape Starts Now. 🎁";
+  let html = "";
+
+  if (type === 'bundle') {
+    subject = "Welcome to The $100K Digital Stack!";
+    html = `
+      <p>Hey ${customerName},</p>
+      <p>You did it — welcome to the VXP Network.</p>
+      <p>You now have full access to The $100K Digital Stack — five high-level eBooks built to help you outsmart the system, create your own digital leverage, and think like the new generation of power players.</p>
+      <p>Below are your download links</p>
+      <p><strong>Your Bundle:</strong> <a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link">Download The $100K Digital Stack</a></p>
+      <p>(You’ll get AI Symbiosis, Lazy Genius, Influencer Guide, Agentic AI Playbook, and Corporate Ninjutsu, AI Agentic For Business.)</p>
+      <p><strong>Bonus:</strong> <a href="[VXP Escape Checklist]">VXP Escape Checklist</a><br>Use it to map your launch plan and keep your focus razor-sharp.</p>
+      <h4>Quick Tips to Get the Most Out of Your Stack</h4>
+      <ul>
+        <li>Start with AI Symbiosis — it’ll rewire how you think about money and machines.</li>
+        <li>End with Corporate Ninjutsu — it’s your mental armor.</li>
+        <li>Keep everything saved — lifetime access means this system grows with you.</li>
+      </ul>
+      <h4>Your Next Step</h4>
+      <p>You’ve joined something rare — most people read; a few build.<br>
+      If you’d like to earn by sharing the bundle, you can join the upcoming VXP Seller Challenge here: <a href="https://forms.gle/hb4V3Afi6engfnFF6">https://forms.gle/hb4V3Afi6engfnFF6</a></p>
+      <p><br>Osuji Precious<br>CEO – Versatile Xpert<br>“People use AI. You’ll learn to profit from it.”</p>
+    `;
+  } else {
+    html = `
+      <h2>Hi ${customerName},</h2>
+      <p>Thank you for your purchase!</p>
+      <p>Your digital book is ready to download. We built this resource to help you level up, learn faster, and unlock new opportunities.</p>
+      <p><strong>Download your book here:</strong></p>
+      <a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link" style="display: inline-block; padding: 10px 20px; background-color: #6C63FF; color: white; text-decoration: none; border-radius: 5px;">Download Now</a>
+      <p>If you have any trouble accessing your book, reply to this email and our team will help you out.</p>
+      <hr>
+      <p><strong>Want more?</strong> Explore our full digital shop for bundles, bonuses, and exclusive content.</p>
+      <p>Stay curious, stay bold.<br>VXP Team</p>
+    `;
+  }
 
   try {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
-      subject: "You're In. Your Escape Starts Now. 🎁",
-      html: `
-        <h2>Hi ${customerName},</h2>
-        <p>Congratulations. You just did what most people don't: You bet on your future with something smarter than luck — a weapon.</p>
-        <p>Inside this bundle is more than just content. It's leverage. Speed. Systems. And a shot at income that doesn't ask for permission.</p>
-        <p>👇 Here's your VXP Escape Bundle + Checklist:</p>
-        <a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Download Button</a>
-        <p><a href="https://drive.google.com/drive/folders/1-e8s5m97MI66uVw6bXw4Ue7DrQnpFc9v?usp=drive_link">Backup Link</a></p>
-        <p>You have 2 days before this link expires — just like the discounted rate. So make this moment count.</p>
-        <p><strong>Affiliate Perk Reminder</strong><br>
-        You now earn $30 for every person you refer.
-        <a href="https://your-affiliate-link-generator.com">Grab your link here</a></p>
-        <p>If you run into anything or need help escaping the matrix, just reply to this email. We're right behind you.</p>
-        <p>Stay bold,<br>VXP Launch Team<br>We don't sell books. We sell your exit.</p>
-      `,
+      subject,
+      html,
     });
     console.log(`Email sent to ${email} for order ID ${orderId}`);
     res.status(200).send('Ebook sent successfully');
