@@ -200,15 +200,14 @@ How the smartest people play the game of wealth without being seen.</p>
           <p className='font-medium'>Lifetime Access:</p>
           <p>Once you buy, it’s yours forever</p>
           <div className="flex flex-col justify-center items-center mt-6 gap-2">
-            <p className="gap-2">You don’t need permission to build your empire.
+               <p className="text-red-500 font-semibold text-2xl">You don’t need permission to build your empire.
 You just need the blueprint</p>
-               <p className="text-red-500 font-semibold text-2xl">Grab the $100K Digital Stack now $95 today (goes up soon)</p>
           </div>
         </div>
       </div>
       <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
         <CardContent className="p-6 space-y-8">
-          <h2 className="text-xl font-semibold text-center">Purchase the Bundle for ${bundlePrice}</h2>
+          <h2 className="text-xl font-semibold text-center">Grab the $100K Digital Stack now ${bundlePrice}today (goes up soon)</h2>
           <Input
             type="email"
             placeholder="Enter your email address"
