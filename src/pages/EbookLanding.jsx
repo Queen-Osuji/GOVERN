@@ -21,7 +21,7 @@ const EbookLanding = () => {
   const [error, setError] = useState(''); // Error state for user feedback
   const [isLaunched, setIsLaunched] = useState(false);
   const [bundlePrice, setBundlePrice] = useState('95');
-  const launchDate = new Date('2025-10-25T00:00:00Z');
+  const launchDate = new Date('2025-10-T00:00:00Z');
 
   useEffect(() => {
     const now = new Date();
@@ -133,10 +133,10 @@ const EbookLanding = () => {
   return (
     <div className="min-h-screen min-w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
       <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 max-w-md md:max-w-xl">
-        The $100K Blueprint: Unlock the Digital Stack That Works While You Sleep
+        The $100K Digital Stack Outsmart the System. Build Your Freedom
       </h1>
       <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
-        5 Ebooks. 1 mission. Escape poverty, reclaim time, and outsmart Silicon Valley, starting now
+        5 eBooks + 1 mission: escape the grind, master AI, and build income that doesn’t rely on luck or endless hustle
       </p>
       <div className="text-center mb-2">
         <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In:</h2>
@@ -154,20 +154,55 @@ const EbookLanding = () => {
         <img src={book12} alt="Agentic AI Ebook book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2" aria-label="Corporate Ninjutsu book" />
       </div>
       <div className="flex flex-col max-w-md text-center mb-20">
-        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">What you are getting:</h2>
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">Inside The Bundle</h2>
         <div className="flex flex-col text-left gap-2 mx-4 font-sans">
-          <p>AI Symbiosis – A high-level blueprint that rivals $1,500 courses</p>
-          <p>Lazy Genius – Passive revenue breakthroughs</p>
-          <p>Influencer Playbook – Grow even with zero followers</p>
-          <p>Agentic OS in Business – Monetize machine learning in your business without watching long video courses and living in tutorial hell</p>
-          <p>Agentic AI Playbook - Creating mirco-products that you can sell</p>
+          <div className="flex-col gap-2">
+            <p className="font-medium">AI Symbiosis –</p>
+                <p className="italic justify-end ">Understand how to think like AI — and use it to amplify your creativity, money flow, and decision-making.
+  This book alone can replace 10 random online courses.</p>
+            </div>
+          <div className="flex-col gap-2">
+            <p className="font-medium">Lazy Genius –</p>
+                <p className="italic justify-end ">Discover how to earn without burnout. Learn to build systems that work for you — even when you’re offline</p>
+            </div>
+          <div className="flex-col gap-2">
+            <p className="font-medium">Influencer Playbook –</p>
+                <p className="italic justify-end ">Build authority and sell digital products even if you have zero followers.
+Learn the psychology of influence — not just the tactics</p>
+            </div>
+          <div className="flex-col gap-2">
+            <p className="font-medium">Agentic OS in Business –</p>
+                <p className="italic justify-end ">Create micro-products, automate workflows, and use AI like a digital business partner.
+It’s the entrepreneur’s shortcut to becoming 10x more productive.</p>
+            </div>
+          <div className="flex-col gap-2">
+            <p className="font-medium">Agentic OS in Business –</p>
+                <p className="italic justify-end ">Create micro-products, automate workflows, and use AI like a digital business partner.
+It’s the entrepreneur’s shortcut to becoming 10x more productive.</p>
+            </div>
+          <div className="flex-col gap-2">
+            <p className="font-medium">Agentic AI Playbook –</p>
+                <p className="italic justify-end ">A behind-the-scenes look at power, control, and strategy in the digital world.
+How the smartest people play the game of wealth without being seen</p>
+            </div>
+          <div className="flex-col gap-2">
+            <p className="font-medium">Corporate Ninjutsu –</p>
+                <p className="italic justify-end ">A behind-the-scenes look at power, control, and strategy in the digital world.
+How the smartest people play the game of wealth without being seen.</p>
+            </div>
         </div>
         <div className="flex flex-col justify-center items-center mt-5 gap-2">
           <h2 className="text-xl font-bold">Bonus</h2>
-          <p>VXP Escape Checklist:</p>
-          <p>Roadmap to your rebel launch & Corporate Ninjutsu</p>
-          <div className="flex justify-center items-center">
-            <p className="gap-2">If you use these tactics, you will make <span className="text-red-500 font-semibold text-lg">enemies.</span> Be ready</p>
+          <p className='font-medium'>VXP Escape Checklist:</p>
+          <p>Your roadmap for digital freedom</p>
+          <p className='font-medium'>Certificate of Completion:</p>
+          <p>Signed by Osuji Precious, CEO – VXP Global</p>
+          <p className='font-medium'>Lifetime Access:</p>
+          <p>Once you buy, it’s yours forever</p>
+          <div className="flex flex-col justify-center items-center mt-6 gap-2">
+            <p className="gap-2">You don’t need permission to build your empire.
+You just need the blueprint</p>
+               <p className="text-red-500 font-semibold text-2xl">Grab the $100K Digital Stack now $95 today (goes up soon)</p>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
-const { sendEbook } = require('../../services/sendEmail');
+import express from 'express';
+import { sendEbook } from '../services/sendEmail.js';
 
-module.exports = async (req, res) => {
-  if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
-  }
+const router = express.Router();
+
+router.post('/send-ebook', async (req, res) => {
   await sendEbook(req, res);
-};
+});
+
+export default router;

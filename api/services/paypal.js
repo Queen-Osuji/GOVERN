@@ -1,10 +1,10 @@
-const axios = require('axios');
+import axios from 'axios';
 
-async function verifyPayPalPayment(orderId) {
+export async function verifyPayPalPayment(orderId) {
   const clientId = process.env.PAYPAL_CLIENT_ID;
   const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
-  const isSandbox = process.env.PAYPAL_ENV === 'live';
-  const baseUrl = isSandbox ? 'https://api-m.sandbox.pxaypal.com' : 'https://api-m.paypal.com'; // I am to put the main sandox url here
+  const isSandbox = process.env.PAYPAL_ENV !== 'live';
+  const baseUrl = isSandbox ? 'https://api-m.sandbox.paypal.com' : 'https://api-m.paypal.com';
   const url = `${baseUrl}/v2/checkout/orders/${orderId}`;
 
   try {
@@ -18,14 +18,12 @@ async function verifyPayPalPayment(orderId) {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
 
-    if (orderResponse.data.status === 'COMPLETED' && orderResponse.data.purchase_units[0].amount.value === '85.00') {
+    if (orderResponse.data.status === 'COMPLETED') {
       return { success: true, amount: orderResponse.data.purchase_units[0].amount.value };
     }
-    return { success: false, message: 'Payment not completed or incorrect amount' };
+    return { success: false, message: 'Payment not completed' };
   } catch (error) {
     console.error('PayPal verification error:', error.message);
     return { success: false, message: 'Verification failed' };
   }
 }
-
-module.exports = { verifyPayPalPayment };
