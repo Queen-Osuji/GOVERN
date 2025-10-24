@@ -1,7 +1,7 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 import ComingSoonModal from '../components/ComingSoonModal';
-import AIModelModal from '../components/AIModelModal'; // Import the modal component
+import AIModelModal from '../components/AIModelModal'; 
 import ai1 from '../assets/models/ai1.jpg';
 import ai2 from '../assets/models/ai2.jpg'
 import ai3 from '../assets/models/ai3.jpg'
@@ -97,7 +97,7 @@ const AIMarketplace = () => {
             return actions.order.create({
               purchase_units: [{
                 amount: {
-                  value: '99', 
+                  value: '99',
                   currency_code: 'USD'
                 }
               }]
