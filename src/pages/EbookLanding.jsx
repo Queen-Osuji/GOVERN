@@ -207,7 +207,7 @@ You just need the blueprint</p>
       </div>
       <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
         <CardContent className="p-6 space-y-8">
-          <h2 className="text-xl font-semibold text-center">Grab the $100K Digital Stack now ${bundlePrice}today (goes up soon)</h2>
+          <h2 className="text-xl font-semibold text-center">🔒 Let me in -- ${bundlePrice} Access</h2>
           <Input
             type="email"
             placeholder="Enter your email address"
