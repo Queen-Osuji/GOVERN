@@ -207,7 +207,11 @@ You just need the blueprint</p>
       </div>
       <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
         <CardContent className="p-6 space-y-8">
-          <h2 className="text-xl font-semibold text-center">🔒 Let me in -- ${bundlePrice} Access</h2>
+          <div className=" flex flex-col items-center justify-center mx-auto gap-2">
+             <h2 className="text-xl font-semibold text-center">🔒 Let me in -- ${bundlePrice} Access</h2>
+                <p className='text-sm'>Goes up. To $195 in 4 days</p>
+
+          </div>
           <Input
             type="email"
             placeholder="Enter your email address"
