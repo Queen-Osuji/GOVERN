@@ -97,7 +97,7 @@ const AIMarketplace = () => {
             return actions.order.create({
               purchase_units: [{
                 amount: {
-                  value: '99', // Set your price per model
+                  value: '99', 
                   currency_code: 'USD'
                 }
               }]
