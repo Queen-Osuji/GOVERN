@@ -246,7 +246,7 @@ You just need the blueprint</p>
       )}
       <p className="text-xs text-center mt-8 text-purple-400">
         <a href="/terms-and-conditions" className="underline" rel="noopener noreferrer">Terms and Conditions</a> |
-        <a href="/privacy-policy" className="underline ml-2" rel="noopener noreferrer">Privacy Policy</a> |
+        <a href="/terms-and-conditions" className="underline ml-2" rel="noopener noreferrer">Privacy Policy</a> |
         Powered by VXP – Creating the Future with Intelligence™
       </p>
     </div>
