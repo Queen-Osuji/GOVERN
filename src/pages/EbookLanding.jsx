@@ -21,7 +21,7 @@ const EbookLanding = () => {
   const [error, setError] = useState(''); // Error state for user feedback
   const [isLaunched, setIsLaunched] = useState(false);
   const [bundlePrice, setBundlePrice] = useState('95');
-  const launchDate = new Date('2025-10-T:00:00Z');
+  const launchDate = new Date('2025-10-31:00:00Z');
 
   useEffect(() => {
     const now = new Date();
