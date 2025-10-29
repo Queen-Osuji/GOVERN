@@ -60,7 +60,7 @@ const DigitalShop = () => {
             createOrder: (data, actions) => {
               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
               if (!email || !emailRegex.test(email)) {
-                setError('Please enter a valid email address.');
+                setError('Please enter a valid email address before proceeding with payment.');
                 return Promise.reject(new Error('Invalid email'));
               }
               setError('');
@@ -251,7 +251,7 @@ const DigitalShop = () => {
   const handleFreeDownload = async (product) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
+      setError('Please enter a valid email address before downloading.');
       return;
     }
 

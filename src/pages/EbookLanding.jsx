@@ -40,7 +40,7 @@ const EbookLanding = () => {
               // Validate email before creating order
               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
               if (!email || !emailRegex.test(email)) {
-                setError('Please enter a valid email address.');
+                setError('Please enter a valid email address before proceeding with payment.');
                 return Promise.reject(new Error('Invalid email'));
               }
               setError(''); // Clear error
@@ -68,7 +68,7 @@ const EbookLanding = () => {
             },
             onError: (err) => {
               console.error('PayPal error:', err);
-              setError('An error occurred with the payment. Please try again.');
+              setError('An error occurred with the payment. Please enter your email before payment.');
               setIsLoading(false);
             }
           });
@@ -132,18 +132,48 @@ const EbookLanding = () => {
 
   return (
     <div className="min-h-screen min-w-full bg-gradient-to-b from-black via-purple-900 to-black text-white flex flex-col items-center justify-center pt-40 pb-10 px-4">
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 max-w-md md:max-w-xl">
+      <div className="flex-col mx-auto mt-0 justify-center ">
+        <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 max-w-md md:max-w-xl">
         The $100K Digital Stack Outsmart the System. Build Your Freedom
       </h1>
-      <p className="flex text-center text-base md:text-xl mb-8 max-w-md md:max-w-xl px-4">
-        5 eBooks + 1 mission: escape the grind, master AI, and build income that doesn’t rely on luck or endless hustle
+      <p className="flex text-center text-base md:text-xl mb-2 max-w-md md:max-w-xl px-4">
+        6 EBooks + 1 mission: escape the grind, master AI, and build income that doesn’t rely on luck or endless hustle
       </p>
+        <p className="flex text-center justify-center text-base md:text-md mb-8 text-yellow-300">Already read by 2,000+ creators worldwide  you could be next</p>
+      </div>
       <div className="text-center mb-2">
-        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle Launches In:</h2>
+        <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle has been Launched </h2>
         <Countdown date={launchDate} renderer={renderer} />
         {isLaunched && (
           <p className="text-2xl font-bold text-green-400 mt-2">Now available for ${bundlePrice}!</p>
         )}
+         <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
+        <CardContent className="p-6 space-y-8">
+          <div className=" flex flex-col items-center justify-center mx-auto gap-2">
+             <h2 className="text-xl font-semibold text-center">Let me in — ${bundlePrice} Access</h2>
+                <p className='text-sm'>Goes up To $195 in 4 days</p>
+
+          </div>
+          <Input
+            type="email"
+            placeholder="Enter your email address"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError(''); // Clear error on input change
+            }}
+            className="my-2 p-4 w-full bg-gray-100 rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
+          />
+          {error && (
+            <p className="text-red-500 text-sm text-center" role="alert">
+              {error}
+            </p>
+          )}
+          <div id="paypal-button-container" className="">
+            {isLoading && <p className="text-center text-gray-600">Processing payment...</p>}
+          </div>
+        </CardContent>
+      </Card>
       </div>
       <div className="relative flex gap-0 md:gap-5 items-center justify-center mb-10 mt-10">
         <img src={book5} alt="Lazy Genius book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2" aria-label="Lazy Genius book" />
@@ -206,34 +236,7 @@ You just need the blueprint</p>
           </div>
         </div>
       </div>
-      <Card className="bg-white w-full text-black max-w-sm md:max-w-lg py-10">
-        <CardContent className="p-6 space-y-8">
-          <div className=" flex flex-col items-center justify-center mx-auto gap-2">
-             <h2 className="text-xl font-semibold text-center">Let me in — ${bundlePrice} Access</h2>
-                <p className='text-sm'>Goes up To $195 in 4 days</p>
 
-          </div>
-          <Input
-            type="email"
-            placeholder="Enter your email address"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setError(''); // Clear error on input change
-            }}
-            className="my-2 p-4 w-full bg-gray-100 rounded-md focus:rounded-md focus:outline-none focus:ring-1 focus:ring-purple-600 focus:border-transparent"
-          />
-          {error && (
-            <p className="text-red-500 text-sm text-center" role="alert">
-              {error}
-            </p>
-          )}
-          <div id="paypal-button-container" className="mb-4">
-            {isLoading && <p className="text-center text-gray-600">Processing payment...</p>}
-          </div>
-          {isLoading && <p className="text-center text-gray-600">Processing...</p>}
-        </CardContent>
-      </Card>
       {showGift && (
         <div className="mt-10 text-center" role="alert" aria-live="polite">
           <div className="bg-purple-800 text-white p-8 rounded-2xl shadow-xl inline-block">
