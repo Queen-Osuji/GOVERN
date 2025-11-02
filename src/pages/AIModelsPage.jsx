@@ -42,7 +42,7 @@ const AIMarketplace = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [accessGranted, setAccessGranted] = useState(false);
-  const [isGenesisOpen, setIsGenesisOpen] = useState(false);
+
 
   const openModal = useCallback((model) => {
     setSelectedModel(model);
@@ -140,29 +140,12 @@ const AIMarketplace = () => {
             <img src={model.image} alt={model.name} className="w-full h-50 object-cover rounded-md mb-4" />
             <h2 className="text-xl font-semibold mb-1">{model.name}</h2>
             <p className="text-gray-400 text-sm mb-2">{model.tagline}</p>
-            {model.name === 'LIFE (The Genesis Engine)' ? (
-              <div className="flex gap-2 mt-2">
-                <button
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-purple-800 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all"
-                  onClick={() => openModal(model)}
-                >
-                  Buy with PayPal
-                </button>
-                <button
-                  className="flex-1 bg-gradient-to-r from-purple-700 to-purple-900 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all"
-                  onClick={() => setIsGenesisOpen(true)}
-                >
-                  Genesis
-                </button>
-              </div>
-            ) : (
-              <button
-                className="w-full bg-gray-600 py-2 rounded-lg font-medium cursor-not-allowed opacity-60"
-                disabled
-              >
-                Coming Soon
-              </button>
-            )}
+            <button
+              className="w-full bg-gray-600 py-2 rounded-lg font-medium cursor-not-allowed opacity-60"
+              disabled
+            >
+              Coming Soon
+            </button>
           </div>
         ))}
       </div>
@@ -210,32 +193,6 @@ const AIMarketplace = () => {
         </div>
       )}
 
-      {/* Genesis Modal */}
-      {isGenesisOpen && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="bg-gradient-to-br from-purple-900/90 to-black rounded-lg shadow-xl p-8 w-full max-w-md relative">
-            <button
-              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
-              onClick={() => setIsGenesisOpen(false)}
-            >
-              &times;
-            </button>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4 text-white">Genesis Engine</h3>
-              <p className="text-gray-300 mb-6">Google AI Studio cannot be embedded. Click below to open in a new window.</p>
-              <button
-                onClick={() => {
-                  window.open('https://aistudio.google.com/prompts/1ppypk_n-iYuvMxlCBBu7Kb_EAguRVDnX', '_blank', 'width=1200,height=800');
-                  setIsGenesisOpen(false);
-                }}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg font-medium text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all"
-              >
-                Open Genesis
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       </div>
       </div>
     </>
