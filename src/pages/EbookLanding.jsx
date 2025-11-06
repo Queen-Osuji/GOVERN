@@ -143,7 +143,7 @@ const EbookLanding = () => {
       </div>
       <div className="text-center mb-2">
         <h2 className="text-xl md:text-2xl font-bold mt-5 mb-2">Bundle has been Launched </h2>
-        <Countdown date={launchDate} renderer={renderer} />
+        {/* <Countdown date={launchDate} renderer={renderer} /> */}
         {isLaunched && (
           <p className="text-2xl font-bold text-green-400 mt-2">Now available for ${bundlePrice}!</p>
         )}
