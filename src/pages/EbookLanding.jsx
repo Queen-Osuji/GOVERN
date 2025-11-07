@@ -12,6 +12,7 @@ import book5 from '../assets/books/book5.jpg';
 import book2 from '../assets/books/book2.png';
 import book12 from '../assets/books/book12.jpg'
 import { loadScript } from '@paypal/paypal-js';
+import './EbookLanding.css';
 
 const EbookLanding = () => {
   const [email, setEmail] = useState('');
@@ -175,13 +176,96 @@ const EbookLanding = () => {
         </CardContent>
       </Card>
       </div>
-      <div className="relative flex gap-0 md:gap-5 items-center justify-center mb-10 mt-10">
-        <img src={book5} alt="Lazy Genius book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform -rotate-6 md:rotate-2" aria-label="Lazy Genius book" />
-        <img src={book8} alt="AGENTIC AI OS book cover" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform -rotate-3" aria-label="Agentic AI OS book" />
-        <img src={book4} alt="AI Symbiosis book cover" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1" aria-label="AI Symbiosis book" />
-        <img src={book2} alt="Influencer Guide book cover" className="w-20 md:w-60 rounded-xl shadow-xl drop-shadow-md transform rotate-1" aria-label="Influencer Guide book" />
-        <img src={book11} alt="Corporate Ninjutsu Ebook book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2" aria-label="Corporate Ninjutsu book" />
-        <img src={book12} alt="Agentic AI Ebook book cover" className="w-20 md:w-56 rounded-xl shadow-xl drop-shadow-md transform rotate-2 md:-rotate-2" aria-label="Corporate Ninjutsu book" />
+      <div className="relative flex gap-2 md:gap-5 items-center justify-center mb-10 mt-10 perspective-1000">
+        {/* Book 1 */}
+        <div className="group cursor-pointer">
+          <div className="book-3d relative w-20 md:w-56 h-28 md:h-72 transform-gpu transition-all duration-700 group-hover:animate-book-hover" style={{ transform: 'rotateY(-6deg) rotateZ(-6deg)' }}>
+            <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+              boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+            }}>
+              <img src={book5} alt="Lazy Genius book cover" className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+              <div className="absolute left-0 top-0 w-1 md:w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+            <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+          </div>
+        </div>
+
+        {/* Book 2 */}
+        <div className="group cursor-pointer">
+          <div className="book-3d relative w-20 md:w-60 h-28 md:h-76 transform-gpu transition-all duration-700 group-hover:animate-book-hover" style={{ transform: 'rotateY(-3deg) rotateZ(-3deg)' }}>
+            <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+              boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+            }}>
+              <img src={book8} alt="AGENTIC AI OS book cover" className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+              <div className="absolute left-0 top-0 w-1 md:w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+            <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+          </div>
+        </div>
+
+        {/* Book 3 */}
+        <div className="group cursor-pointer">
+          <div className="book-3d relative w-20 md:w-60 h-28 md:h-76 transform-gpu transition-all duration-700 group-hover:animate-book-hover" style={{ transform: 'rotateY(1deg) rotateZ(1deg)' }}>
+            <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+              boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+            }}>
+              <img src={book4} alt="AI Symbiosis book cover" className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+              <div className="absolute left-0 top-0 w-1 md:w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+            <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+          </div>
+        </div>
+
+        {/* Book 4 */}
+        <div className="group cursor-pointer">
+          <div className="book-3d relative w-20 md:w-60 h-28 md:h-76 transform-gpu transition-all duration-700 group-hover:animate-book-hover" style={{ transform: 'rotateY(1deg) rotateZ(1deg)' }}>
+            <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+              boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+            }}>
+              <img src={book2} alt="Influencer Guide book cover" className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+              <div className="absolute left-0 top-0 w-1 md:w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+            <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+          </div>
+        </div>
+
+        {/* Book 5 */}
+        <div className="group cursor-pointer">
+          <div className="book-3d relative w-20 md:w-56 h-28 md:h-72 transform-gpu transition-all duration-700 group-hover:animate-book-hover" style={{ transform: 'rotateY(2deg) rotateZ(2deg)' }}>
+            <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+              boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+            }}>
+              <img src={book11} alt="Corporate Ninjutsu Ebook book cover" className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+              <div className="absolute left-0 top-0 w-1 md:w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+            <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+          </div>
+        </div>
+
+        {/* Book 6 */}
+        <div className="group cursor-pointer">
+          <div className="book-3d relative w-20 md:w-56 h-28 md:h-72 transform-gpu transition-all duration-700 group-hover:animate-book-hover" style={{ transform: 'rotateY(2deg) rotateZ(-2deg)' }}>
+            <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+              boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+            }}>
+              <img src={book12} alt="Agentic AI Ebook book cover" className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+              <div className="absolute left-0 top-0 w-1 md:w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+            <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+          </div>
+        </div>
       </div>
       <div className="flex flex-col max-w-md text-center mb-20">
         <h2 className="text-xl md:text-2xl font-bold mt-5 mb-4">Inside The Bundle</h2>

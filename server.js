@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import sendEbookRouter from './api/emails/send-ebook.js';
+import { sendEbookWithAttachment, sendBundleWithAttachments } from './api/services/sendEmailWithAttachment.js';
 
 dotenv.config();
 
@@ -24,6 +25,8 @@ app.use(limiter);
 
 // API Routes
 app.use('/api/email', sendEbookRouter);
+app.post('/api/email/send-with-attachment', sendEbookWithAttachment);
+app.post('/api/email/send-bundle-with-attachments', sendBundleWithAttachments);
 
 // Health check
 app.get('/api/health', (req, res) => {

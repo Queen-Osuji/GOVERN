@@ -119,8 +119,8 @@ const DigitalShop = () => {
   const sendEbook = async (email, orderId, productTitle) => {
     setIsLoading(true);
     try {
-      // Replace with your actual API endpoint
-      const apiUrl = '/api/email/send-ebook'; // or import.meta.env.VITE_API_URL
+      // Use the new attachment-based email endpoint
+      const apiUrl = '/api/email/send-with-attachment';
 
       const res = await fetch(apiUrl, {
         method: 'POST',
@@ -140,7 +140,7 @@ const DigitalShop = () => {
       setShowGift(true);
       setEmail('');
       setError('');
-      console.log('Ebook sent successfully');
+      console.log('Ebook sent successfully with attachment');
     } catch (error) {
       console.error('Error sending ebook:', error.message);
       setError(`Failed to send ebook: ${error.message}. Please contact support.`);
@@ -154,7 +154,7 @@ const DigitalShop = () => {
       {
         title: "100 Prompts",
         author: "Versatile.co",
-        price: { usd: "$299.00" },
+        price: { usd: "$50" },
         image: book1,
         category: "AI & Machine Learning",
         rating: 5,
@@ -170,7 +170,7 @@ const DigitalShop = () => {
       {
         title: "AI for Business (Beginner's Guide)",
         author: "Versatile.co",
-        price: { usd: "$299.00" },
+        price: { usd: "$299" },
         image: book3,
         rating: 4,
         category: "AI & Machine Learning",
@@ -178,7 +178,7 @@ const DigitalShop = () => {
       {
         title: "Lazy Genius",
         author: "Versatile.co",
-        price: { usd: "$500.00" },
+        price: { usd: "$500" },
         image: book5,
         rating: 3.5,
         category: "AI & Machine Learning",
@@ -202,7 +202,7 @@ const DigitalShop = () => {
       {
         title: "AI Agent Fundamentals",
         author: "Versatile.co",
-        price: { usd: "$0" },
+        price: { usd: "$00" },
         image: book7,
         category: "AI & Machine Learning",
         rating: 4.5,
@@ -219,7 +219,7 @@ const DigitalShop = () => {
       {
         title: "First Time Mum",
         author: "Versatile.co",
-        price: { usd: "$50" },
+        price: { usd: "$20" },
         image: book9,
         category: "Women & Babies",
         rating: 4.5,
@@ -303,12 +303,14 @@ const DigitalShop = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12x">
           {filteredProducts.map((product, index) => (
             <div key={index} className="group cursor-pointer" onClick={() => { setSelectedProduct(product); setModalOpen(true); setShowGift(false); setError(''); }}>
               {/* 3D Book Container */}
               <div className="relative mx-auto w-48 h-64 perspective-1000">
-                <div className="book-3d relative w-full h-full transform-gpu transition-all duration-500 group-hover:rotate-y-12 group-hover:scale-105">
+                <div className={`book-3d relative w-full h-full transform-gpu transition-all duration-700 ${
+                  isLoading && selectedProduct?.title === product.title ? 'animate-book-processing' : 'group-hover:animate-book-hover'
+                }`}>
                   {/* Book Cover */}
                   <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
                     boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
@@ -316,40 +318,50 @@ const DigitalShop = () => {
                     <img
                       src={product.image}
                       alt={product.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110"
                     />
-                    
+
+                    {/* Magical Glow Effect on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
+
+                    {/* Floating Sparkles on Hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute top-4 right-8 w-1 h-1 bg-yellow-300 rounded-full animate-sparkle-1"></div>
+                      <div className="absolute top-12 left-6 w-1 h-1 bg-purple-300 rounded-full animate-sparkle-2"></div>
+                      <div className="absolute bottom-8 right-4 w-1 h-1 bg-blue-300 rounded-full animate-sparkle-3"></div>
+                    </div>
+
                     {/* Book Spine Shadow */}
                     <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
-                    
+
                     {/* Price Badge */}
                     {product.isFree ? (
-                      <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold z-10">
+                      <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold z-10 animate-pulse">
                         FREE
                       </div>
                     ) : (
-                      <div className="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10">
+                      <div className="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 group-hover:animate-bounce">
                         {product.price.usd}
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Book Pages Effect */}
-                  <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10"></div>
-                  <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20"></div>
-                  
+                  <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10 transition-all duration-500 group-hover:translate-x-2"></div>
+                  <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20 transition-all duration-500 group-hover:translate-x-3"></div>
+
                   {/* Book Spine */}
                   <div className="absolute left-0 top-0 w-3 h-full bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 transform origin-left -rotate-y-90 translate-z-1"></div>
                 </div>
               </div>
-              
+
               {/* Book Info */}
               <div className="mt-4 text-center px-2">
                 <h3 className="text-white font-semibold text-sm mb-1 line-clamp-2 group-hover:text-purple-300 transition-colors">
                   {product.title}
                 </h3>
                 <p className="text-gray-400 text-xs mb-2">{product.author}</p>
-                
+
                 {/* Rating */}
                 <div className="flex justify-center items-center gap-1 mb-2">
                   {[...Array(5)].map((_, i) => (
@@ -361,7 +373,7 @@ const DigitalShop = () => {
                   ))}
                   <span className="text-gray-400 text-xs ml-1">({product.rating})</span>
                 </div>
-                
+
                 <div className="text-purple-400 font-medium text-sm mb-2">
                   {product.price.usd}
                 </div>
@@ -369,35 +381,88 @@ const DigitalShop = () => {
             </div>
           ))}
         </div>
-        
+
         <style jsx>{`
           .perspective-1000 {
             perspective: 1000px;
           }
-          
+
           .book-3d {
             transform-style: preserve-3d;
           }
-          
+
           .book-cover {
             transform-style: preserve-3d;
           }
-          
-          .group:hover .book-3d {
-            transform: rotateY(-8deg) scale(1.05);
+
+          @keyframes book-hover {
+            0% { transform: rotateY(0deg) scale(1) translateY(0px); }
+            100% { transform: rotateY(-8deg) scale(1.05) translateY(-5px); }
           }
-          
+
+          @keyframes book-processing {
+            0% { transform: rotateY(0deg) scale(1) translateY(0px); }
+            25% { transform: rotateY(-15deg) scale(1.1) translateY(-10px); }
+            50% { transform: rotateY(15deg) scale(1.1) translateY(-10px); }
+            75% { transform: rotateY(-15deg) scale(1.1) translateY(-10px); }
+            100% { transform: rotateY(0deg) scale(1) translateY(0px); }
+          }
+
+          @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+
+          @keyframes sparkle-1 {
+            0%, 100% { opacity: 0; transform: scale(0) translateY(0px); }
+            50% { opacity: 1; transform: scale(1) translateY(-10px); }
+          }
+
+          @keyframes sparkle-2 {
+            0%, 100% { opacity: 0; transform: scale(0) translateY(0px); }
+            60% { opacity: 1; transform: scale(1) translateY(-8px); }
+          }
+
+          @keyframes sparkle-3 {
+            0%, 100% { opacity: 0; transform: scale(0) translateY(0px); }
+            40% { opacity: 1; transform: scale(1) translateY(-12px); }
+          }
+
+          .animate-book-hover {
+            animation: book-hover 0.7s ease-out forwards;
+          }
+
+          .animate-book-processing {
+            animation: book-processing 2s ease-in-out infinite;
+          }
+
+          .animate-shimmer {
+            animation: shimmer 2s ease-in-out infinite;
+          }
+
+          .animate-sparkle-1 {
+            animation: sparkle-1 2s ease-in-out infinite;
+          }
+
+          .animate-sparkle-2 {
+            animation: sparkle-2 2.5s ease-in-out infinite;
+          }
+
+          .animate-sparkle-3 {
+            animation: sparkle-3 1.8s ease-in-out infinite;
+          }
+
           .line-clamp-2 {
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
           }
-          
+
           .-rotate-y-90 {
             transform: rotateY(-90deg);
           }
-          
+
           .translate-z-1 {
             transform: translateZ(1px);
           }
@@ -451,14 +516,22 @@ const DigitalShop = () => {
 
               {error && <div className="text-red-400 mb-2 text-sm mt-2">{error}</div>}
               {isLoading && !selectedProduct.isFree && (
-                <div className="text-purple-400 mb-2 text-center">Processing payment...</div>
+                <div className="text-purple-400 mb-2 text-center animate-pulse flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                  <span className="ml-2">Processing payment and preparing your PDF...</span>
+                </div>
               )}
 
               {showGift && (
                 <div className="bg-purple-800 text-white p-4 rounded-xl shadow-xl mt-4 text-center">
-                  <h4 className="text-lg font-bold">Thank You for Your Purchase!</h4>
+                  <h4 className="text-lg font-bold">📚 Thank You for Your Purchase!</h4>
                   <p className="mt-2 text-sm">
-                    The ebook has been delivered to <strong>{purchasedEmail}</strong>.
+                    Your ebook "<strong>{selectedProduct.title}</strong>" has been sent directly to <strong>{purchasedEmail}</strong> as a PDF attachment.
+                  </p>
+                  <p className="mt-1 text-xs text-purple-200">
+                    Check your email inbox (and spam folder) for the PDF file.
                   </p>
                 </div>
               )}
