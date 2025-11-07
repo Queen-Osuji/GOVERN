@@ -12,6 +12,7 @@ import book8 from "../assets/books/book8.png";
 import book9 from "../assets/books/book9.png";
 import book10 from "../assets/books/book10.png";
 import book12 from "../assets/books/book12.jpg";
+import book13 from "../assets/books/book13.jpg";
 
 const productCategories = ['All', 'AI & Machine Learning', 'Billionaire & Strategy', 'Women & Babies'];
 
@@ -237,6 +238,14 @@ const DigitalShop = () => {
         price: { usd: "$999" },
         image: book12,
         category: "AI & Machine Learning",
+        rating: 4.5,
+      },
+      {
+        title: "The Hidden Truth of Motherhood",
+        author: "Versatile.co",
+        price: { usd: "$39" },
+        image: book13,
+        category: "Women & Babies",
         rating: 4.5,
       },
     ];
