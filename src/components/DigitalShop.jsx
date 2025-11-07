@@ -12,7 +12,7 @@ import book8 from "../assets/books/book8.png";
 import book9 from "../assets/books/book9.png";
 import book10 from "../assets/books/book10.png";
 import book12 from "../assets/books/book12.jpg";
-import book13 from "../assets/books/book13.jpg";
+import book13 from "../assets/books/book13.png";
 
 const productCategories = ['All', 'AI & Machine Learning', 'Billionaire & Strategy', 'Women & Babies'];
 
@@ -303,66 +303,105 @@ const DigitalShop = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredProducts.map((product, index) => (
-            <div key={index} className="bg-gradient-to-br from-purple-900/20 to-black border border-purple-800/20 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-purple-500/10 transition-all group">
-              <div className="relative h-60 w-40 mx-auto mt-6 overflow-hidden rounded-md">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                />
-                {product.isFree && (
-                  <div className="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-md text-xs text-white font-bold">
-                    FREE
+            <div key={index} className="group cursor-pointer" onClick={() => { setSelectedProduct(product); setModalOpen(true); setShowGift(false); setError(''); }}>
+              {/* 3D Book Container */}
+              <div className="relative mx-auto w-48 h-64 perspective-1000">
+                <div className="book-3d relative w-full h-full transform-gpu transition-all duration-500 group-hover:rotate-y-12 group-hover:scale-105">
+                  {/* Book Cover */}
+                  <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
+                    boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
+                  }}>
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Book Spine Shadow */}
+                    <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-r from-black/60 to-transparent"></div>
+                    
+                    {/* Price Badge */}
+                    {product.isFree ? (
+                      <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold z-10">
+                        FREE
+                      </div>
+                    ) : (
+                      <div className="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10">
+                        {product.price.usd}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-1 text-white">{product.title}</h3>
-                <p className="text-gray-400 text-sm mb-2">{product.author}</p>
-                {(() => {
-                  const rating = product.rating || 0;
-                  const filledStars = Math.floor(rating);
-                  const hasHalfStar = rating % 1 !== 0;
-                  return (
-                    <div className="flex items-center mb-3">
-                      {[...Array(filledStars)].map((_, i) => (
-                        <svg key={`filled-${i}`} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
-                        </svg>
-                      ))}
-                      {hasHalfStar && (
-                        <svg className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                          <path d="M12 0.587L12 22.028L4.583 25.999L6.064 17.721L0 11.996L8.332 10.845L12 2.587Z"/>
-                        </svg>
-                      )}
-                      <span className="ml-2 text-sm text-gray-400">({rating.toFixed(1)})</span>
-                    </div>
-                  );
-                })()}
-
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-baseline">
-                    <span className="text-purple-400 font-medium text-xl">{product.price.usd}</span>
-                  </div>
+                  
+                  {/* Book Pages Effect */}
+                  <div className="absolute -right-1 top-1 w-full h-full bg-white/90 rounded-r-lg transform translate-x-1 -translate-y-1 -z-10"></div>
+                  <div className="absolute -right-2 top-2 w-full h-full bg-gray-100/70 rounded-r-lg transform translate-x-2 -translate-y-2 -z-20"></div>
+                  
+                  {/* Book Spine */}
+                  <div className="absolute left-0 top-0 w-3 h-full bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 transform origin-left -rotate-y-90 translate-z-1"></div>
                 </div>
-
-                <button
-                  onClick={() => {
-                    setSelectedProduct(product);
-                    setModalOpen(true);
-                    setShowGift(false);
-                    setError('');
-                  }}
-                  className="w-full bg-gradient-to-r to-purple-800 py-3 rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all cursor-pointer text-white"
-                >
-                  {product.isFree ? 'Get Free Ebook' : 'Let Me In '}
-                </button>
+              </div>
+              
+              {/* Book Info */}
+              <div className="mt-4 text-center px-2">
+                <h3 className="text-white font-semibold text-sm mb-1 line-clamp-2 group-hover:text-purple-300 transition-colors">
+                  {product.title}
+                </h3>
+                <p className="text-gray-400 text-xs mb-2">{product.author}</p>
+                
+                {/* Rating */}
+                <div className="flex justify-center items-center gap-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className={`text-xs ${
+                      i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-600'
+                    }`}>
+                      ★
+                    </span>
+                  ))}
+                  <span className="text-gray-400 text-xs ml-1">({product.rating})</span>
+                </div>
+                
+                <div className="text-purple-400 font-medium text-sm mb-2">
+                  {product.price.usd}
+                </div>
               </div>
             </div>
           ))}
         </div>
+        
+        <style jsx>{`
+          .perspective-1000 {
+            perspective: 1000px;
+          }
+          
+          .book-3d {
+            transform-style: preserve-3d;
+          }
+          
+          .book-cover {
+            transform-style: preserve-3d;
+          }
+          
+          .group:hover .book-3d {
+            transform: rotateY(-8deg) scale(1.05);
+          }
+          
+          .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          
+          .-rotate-y-90 {
+            transform: rotateY(-90deg);
+          }
+          
+          .translate-z-1 {
+            transform: translateZ(1px);
+          }
+        `}</style>
 
         {/* PayPal Modal */}
         {modalOpen && selectedProduct && (
