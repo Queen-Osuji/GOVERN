@@ -312,7 +312,7 @@ const DigitalShop = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12x">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12x space-y-12">
           {filteredProducts.map((product, index) => (
             <div key={index} className="group cursor-pointer" onClick={() => { setSelectedProduct(product); setModalOpen(true); setShowGift(false); setError(''); }}>
               {/* 3D Book Container */}
