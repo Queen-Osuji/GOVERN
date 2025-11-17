@@ -7,7 +7,7 @@ const documentsDir = path.join(process.cwd(), 'api', 'documents');
 // Document mapping - these are the exact filenames your system expects
 const expectedFiles = [
   'AI_Symbiosis.pdf',
-  'Lazy_Genius.pdf', 
+  'Lazy_Genius.pdf',
   'AI_for_Business_Beginners.pdf',
   'Tabloids.pdf',
   'AI_Agent_Fundamentals.pdf',
@@ -15,7 +15,8 @@ const expectedFiles = [
   'First_Time_Mum.pdf',
   'How_to_Finish_Any_eBook.pdf',
   'Agentic_AI_Playbook.pdf',
-  'Hidden_Truth_Motherhood.pdf'
+  'Hidden_Truth_Motherhood.pdf',
+  'The Sacred Choice.pdf'
 ];
 
 console.log('📚 VXP Document Setup Helper\n');
@@ -55,7 +56,7 @@ if (missingFiles.length > 0) {
   missingFiles.forEach(file => {
     console.log(`   • ${file}`);
   });
-  
+
   console.log('\n📝 To fix this:');
   console.log('1. Add your PDF files to: api/documents/');
   console.log('2. Use the exact filenames listed above');

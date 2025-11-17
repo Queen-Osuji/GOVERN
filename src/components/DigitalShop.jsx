@@ -13,6 +13,7 @@ import book9 from "../assets/books/book9.png";
 import book10 from "../assets/books/book10.png";
 import book12 from "../assets/books/book12.jpg";
 import book13 from "../assets/books/book13.png";
+import book14 from "../assets/books/book14.jpg";
 
 const productCategories = ['All', 'AI & Machine Learning', 'Billionaire & Strategy', 'Women & Babies'];
 
@@ -248,6 +249,14 @@ const DigitalShop = () => {
         category: "Women & Babies",
         rating: 4.5,
       },
+      {
+        title: "The Sacred Choice",
+        author: "Versatile.co",
+        price: { usd: "$29.99" },
+        image: book14,
+        category: "Women & Babies",
+        rating: 4.5,
+      }
     ];
     setProducts(allProducts);
     setCategories(productCategories);
@@ -315,11 +324,17 @@ const DigitalShop = () => {
                   <div className="book-cover relative w-full h-full rounded-r-lg overflow-hidden" style={{
                     boxShadow: '8px 8px 25px rgba(0,0,0,0.7), inset -3px 0 6px rgba(0,0,0,0.4)'
                   }}>
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-full object-fill transition-all duration-500 group-hover:brightness-110"
-                    />
+                    <div className={`w-full h-full ${
+                      product.image === book13 || product.image === book14 ? 'bg-gradient-to-br from-purple-900 via-purple-800 to-black' : ''
+                    }`}>
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className={`w-full h-full transition-all duration-500 group-hover:brightness-110 ${
+                          product.image === book13 || product.image === book14 ? 'object-contain' : 'object-fill'
+                        }`}
+                      />
+                    </div>
 
                     {/* Magical Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-400/20 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer"></div>
